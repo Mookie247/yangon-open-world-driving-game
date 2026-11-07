@@ -1,0 +1,158 @@
+{
+  "source_blend": "yangon-game-vehicles.blend",
+  "convention": "Y-up glTF; forward = Blender +Y = glTF -Z; origin at ground centre, base at Z=0",
+  "assets": {
+    "taxi": {
+      "file": "taxi.glb",
+      "size_kb": 209.2,
+      "objects": 94,
+      "meshes": 89,
+      "verts": 1472,
+      "materials": [
+        "Mat_Amber",
+        "Mat_Black",
+        "Mat_Chrome",
+        "Mat_Glass",
+        "Mat_Headlight",
+        "Mat_Hub",
+        "Mat_Plate",
+        "Mat_RedLight",
+        "Mat_TaxiGreen",
+        "Mat_TaxiWhite",
+        "Mat_Tyre",
+        "Mat_Yellow"
+      ],
+      "dims_m": [
+        2.15,
+        4.84,
+        1.86
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)"
+    },
+    "ybs-bus": {
+      "file": "ybs-bus.glb",
+      "size_kb": 210.5,
+      "objects": 87,
+      "meshes": 83,
+      "verts": 1360,
+      "materials": [
+        "Mat_Amber",
+        "Mat_Black",
+        "Mat_BusGreen",
+        "Mat_BusYellow",
+        "Mat_Chrome",
+        "Mat_Glass",
+        "Mat_Headlight",
+        "Mat_Hub",
+        "Mat_Plate",
+        "Mat_RedLight",
+        "Mat_Stone",
+        "Mat_StoneDark",
+        "Mat_TaxiWhite",
+        "Mat_Tyre"
+      ],
+      "dims_m": [
+        3.04,
+        8.81,
+        3.11
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)"
+    },
+    "bicycle": {
+      "file": "bicycle.glb",
+      "size_kb": 411.3,
+      "objects": 87,
+      "meshes": 86,
+      "verts": 4022,
+      "materials": [
+        "Mat_Amber",
+        "Mat_BikeTeal",
+        "Mat_Black",
+        "Mat_Chrome",
+        "Mat_Hub",
+        "Mat_RedLight",
+        "Mat_Seat",
+        "Mat_Tyre"
+      ],
+      "dims_m": [
+        0.67,
+        2.06,
+        1.08
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)",
+      "repair": "Source .blend bicycle is broken: 32 parts had double-transformed X (local X ~= root X 5.4 m) and 3 parts (2 cranks, stem) had 5.3-5.5 m rod geometry from a bad between-points helper. Export copy only: parts shifted back, rods rebuilt as short cylinders (cranks chainring->pedals, stem headtube->handlebar). Source .blend untouched."
+    },
+    "sule-pagoda": {
+      "file": "sule-pagoda.glb",
+      "size_kb": 130.1,
+      "objects": 25,
+      "meshes": 24,
+      "verts": 2148,
+      "materials": [
+        "Mat_Gold",
+        "Mat_GoldDark",
+        "Mat_Stone",
+        "Mat_StoneDark"
+      ],
+      "dims_m": [
+        42.79,
+        42.79,
+        46.0
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)",
+      "scale": "11.26x from 4.09 m miniature to 46.0 m real landmark height",
+      "real_height_m": 46.0
+    },
+    "pedestrians": {
+      "file": "pedestrians.glb",
+      "size_kb": 596.9,
+      "objects": 47,
+      "meshes": 43,
+      "verts": 12608,
+      "materials": [
+        "Mat_Hair",
+        "Mat_Longyi",
+        "Mat_PantsGrey",
+        "Mat_PantsNavy",
+        "Mat_ShirtBlue",
+        "Mat_ShirtOlive",
+        "Mat_ShirtPink",
+        "Mat_ShirtWhite",
+        "Mat_Shoe",
+        "Mat_SkinA",
+        "Mat_SkinB"
+      ],
+      "dims_m": [
+        12.87,
+        1.51,
+        1.75
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)"
+    },
+    "shophouses": {
+      "file": "shophouses.glb",
+      "size_kb": 112.1,
+      "objects": 52,
+      "meshes": 48,
+      "verts": 504,
+      "materials": [
+        "Mat_AwningGreen",
+        "Mat_AwningRed",
+        "Mat_Chrome",
+        "Mat_Glass",
+        "Mat_ShopCream",
+        "Mat_ShopDark",
+        "Mat_ShopOchre",
+        "Mat_ShopTeal",
+        "Mat_ShopTrim",
+        "Mat_StoneDark"
+      ],
+      "dims_m": [
+        11.61,
+        6.15,
+        9.5
+      ],
+      "forward": "+Y (Blender) = -Z (glTF)"
+    }
+  }
+}
