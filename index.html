@@ -209,6 +209,10 @@
   <button class="vbtn" id="btnWheel">🎡 Wheel [Q]</button>
   <button class="vbtn" id="btnPause">⏸ Pause</button>
   <button class="vbtn active" id="btnFps">📊 FPS</button>
+  <button class="vbtn" id="btnSpend">🛒 Spend [Shop]</button>
+  <button class="vbtn" id="btnOutfit">👕 Outfit [O]</button>
+  <button class="vbtn" id="btnRank">🏆 Rank [L]</button>
+  <button class="vbtn" id="btnTravel">🗺️ Travel [T]</button>
 </div>
 
 <div id="toast" style="position:fixed;top:34%;left:50%;transform:translate(-50%,-50%) scale(.94);z-index:30;background:rgba(5,5,8,.85);border-top:2px solid #f5c400;border-bottom:2px solid #f5c400;color:#fff;font-family:'Pricedown Bl','Archivo Black',sans-serif;font-size:30px;letter-spacing:2px;padding:14px 34px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:all .25s"><span id="toastMain">MISSION PASSED</span><div id="toastSub" style="font-family:system-ui;font-size:15px;letter-spacing:0;font-weight:800;color:#f5c400;margin-top:4px">🅿️ PARKED! +5,000 Ks</div></div>
@@ -244,6 +248,10 @@
   <div id="pauseStats" style="font-size:13px;line-height:1.7;opacity:.92;margin-bottom:8px"></div>
   <button class="pbtn" id="btnResume">▶ RESUME · ဆက်ဆော့</button>
   <button class="pbtn" id="btnPauseGarage">🏠 GARAGE & PROPERTIES · အိမ်/ကား</button>
+  <button class="pbtn" id="btnPauseSpend">🛒 SPEND MONEY · ငွေသုံး (အစားအသောက်/ဒဏ်ကြေး/လိုင်စင်)</button>
+  <button class="pbtn" id="btnPauseOutfit">👕 OUTFIT · အဝတ်အစား ရွေး</button>
+  <button class="pbtn" id="btnPauseRank">🏆 MY RANK · ကိုယ့် Rank ကြည့်</button>
+  <button class="pbtn" id="btnPauseTravel">🗺️ TRAVEL · မြို့ပြောင်း (မန္တလေး / တောင်ကြီး)</button>
   <button class="pbtn" id="btnGoHome">🏡 GO HOME · အိမ်ပြန်</button>
   <button class="pbtn" id="btnPauseRadio">📻 RADIO · ရေဒီယို ဖွင့်/ပိတ်</button>
   <button class="pbtn" id="btnPauseNight">🌙 DAY / NIGHT · နေ့/ည</button>
@@ -256,6 +264,35 @@
   <div style="font-size:12.5px;opacity:.8">Mission လုပ်ပြီး Ks ရှာ — အိမ် နဲ့ ကား ဝယ်ပြီး Garage ထဲ သိမ်းထား · Earn Ks from jobs, buy houses & cars</div>
   <div id="shopList"></div>
   <button class="pbtn" id="btnShopClose" style="margin-top:10px">✕ CLOSE · ပိတ်</button>
+</div></div>
+
+
+<div id="spendMenu" class="overlay"><div class="panel">
+  <h2>🛒 SPEND · ငွေသုံးဆိုင်</h2>
+  <div style="font-size:12.5px;opacity:.8">Mission လုပ်ပြီး ရှာထားတဲ့ Ks ကို ဒီမှာ ပြန်သုံးပါ — အစားအသောက်၊ ဆေး၊ ဒဏ်ကြေး၊ လိုင်စင် · Spend the Ks you earned</div>
+  <div id="spendList"></div>
+  <button class="pbtn" id="btnSpendClose" style="margin-top:10px">✕ CLOSE · ပိတ်</button>
+</div></div>
+
+<div id="outfitMenu" class="overlay"><div class="panel">
+  <h2>👕 OUTFIT · အဝတ်အစား</h2>
+  <div style="font-size:12.5px;opacity:.8">အင်္ကျီ + လုံချည် အရောင် ရွေးပါ — လမ်းလျှောက်တဲ့ ကိုယ့် character မှာ တန်းပြောင်းတယ် · Shirt + longyi colours, applied to your on-foot character</div>
+  <div id="outfitList"></div>
+  <button class="pbtn" id="btnOutfitClose" style="margin-top:10px">✕ CLOSE · ပိတ်</button>
+</div></div>
+
+<div id="rankMenu" class="overlay"><div class="panel">
+  <h2>🏆 RANKS · အဆင့်များ</h2>
+  <div style="font-size:12.5px;opacity:.8">Mission ပြီးစီးမှု အရေအတွက်နဲ့ Rank တက်တယ် · Ranks rise with completed missions</div>
+  <div id="rankList"></div>
+  <button class="pbtn" id="btnRankClose" style="margin-top:10px">✕ CLOSE · ပိတ်</button>
+</div></div>
+
+<div id="travelMenu" class="overlay"><div class="panel">
+  <h2>🗺️ TRAVEL · မြို့ပြောင်း</h2>
+  <div style="font-size:12.5px;opacity:.85;line-height:1.6">ရန်ကုန် · မန္တလေး · တောင်ကြီး — မြို့ ၃ မြို့ဟာ <b>သီးခြား zone</b> တွေပါ။ တကယ့် အကွာအဝေးက အရမ်းဝေးလို့ တစ်မြေပုံတည်းမှာ ဆက်မထားဘဲ <b>Highway Gate / ဒီ Travel menu ကနေ Fast Travel</b> နဲ့ ခုန်သွားရပါတယ်။ ကားစီးနေရင်လည်း ကားနဲ့အတူ ပြောင်းပေးတယ်။<br/>The three cities are separate zones — use fast travel (this menu, the [T] key, or a Highway Gate) to jump between them, car included.</div>
+  <div id="travelList"></div>
+  <button class="pbtn" id="btnTravelClose" style="margin-top:10px">✕ CLOSE · ပိတ်</button>
 </div></div>
 
 <div id="vehWheel"><div class="wheelBox">
@@ -284,16 +321,19 @@
 <p style="font-size:11.5px;opacity:.9;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.35);padding:7px 10px;margin-top:10px">🔊 <b>ကားအသံ:</b> တကယ့်ကားအင်ဂျင်သံကို <b>Web Audio synthesis</b> နဲ့ တုပ ဖန်တီးထားတာပါ — external audio file လုံးဝ မပါဘူး။ RPM တက်/ကျအလိုက် အသံ ပြောင်းတယ်၊ ကားအမျိုးအစားအလိုက် အသံကွာတယ် (Taxi · YBS ဒီဇယ် · Sports)၊ Gear ပြောင်းရင် blip သံ၊ မြန်ရင် လမ်းသံ၊ Drift လုပ်ရင် skid သံ၊ ကားထဲ ဝင်ရင် starter crank သံ ကြားရမယ်။ <b>H</b> = Horn · <b>M</b> / 🔊 ခလုတ် = အသံဖွင့်/ပိတ်။<br>The engine sound is synthesized live to mimic a real car — no audio files. It rises and falls with RPM, sounds different per vehicle, and includes gear-shift blips, road noise, skid, horn and starter cranking.</p>
 <p style="font-size:11.5px;opacity:.9;background:rgba(164,210,51,.08);border:1px solid rgba(164,210,51,.35);padding:7px 10px;margin-top:10px">⚡ <b>Performance · 60 FPS ပစ်မှတ်:</b> ဒီဂိမ်းက <b>60 fps</b> တည်ငြိမ်အောင် ရည်ရွယ်ထားတယ် — တကယ့် frame rate ကို တိုင်းပြီး လိုအပ်ရင် resolution၊ shadow၊ မြင်ကွင်း အကွာအဝေးနဲ့ လူအရေအတွက်ကို အလိုအလျောက် အဆင့်ဆင့် လျှော့ချပေးတဲ့ <b>Adaptive Quality</b> စနစ် ပါတယ် (ပြန်မြန်လာရင် အလိုအလျောက် ပြန်တင်ပေးတယ်)။ ညာဘက်အပေါ်က <b>FPS</b> ကောင်တာမှာ လက်ရှိ frame rate ကို အချိန်နဲ့တပြေးညီ မြင်ရပြီး 📊 FPS ခလုတ်နဲ့ ဖွင့်/ပိတ် လုပ်လို့ရတယ်။<br>📌 <b>ရိုးသားစွာ မှတ်ချက်:</b> ဂိမ်းက ဖုန်းရဲ့ ကိုယ်ပိုင် display refresh setting ကို ကျော်လွန်ပြောင်းလို့ <b>မရပါဘူး</b> — 60Hz ဖုန်းမှာ 60 fps က အများဆုံးဖြစ်ပြီး၊ 90Hz / 120Hz ဖုန်းတွေမှာတော့ requestAnimationFrame က display rate အတိုင်း အလိုအလျောက် လိုက်ပြေးပါတယ်။<br>Target: a stable 60 fps on phone and laptop, with automatic adaptive quality. The game cannot override your phone's display refresh setting — 60 fps is the cap on a 60Hz phone; on 90/120Hz phones it runs at the display rate via requestAnimationFrame.</p>
 <p style="font-size:11.5px;opacity:.9;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.35);padding:7px 10px;margin-top:10px">🗺️ <b>မြေပုံ အသစ်:</b> မြို့နယ် ၆ ခု ထပ်ချဲ့ထားတယ် — <b>Bahan</b> (ရွှေတိဂုံ အနီး၊ အင်းလျား အရှေ့ဘက်) · <b>Kamayut</b> (လှည်းတန်း၊ ရန်ကုန်တက္ကသိုလ်၊ အင်းလျား အနောက်ဘက်) · <b>Hlaing</b> (အင်းစိန်လမ်း၊ လှိုင်တက္ကသိုလ်) · <b>Sanchaung</b> (စမ်းချောင်းလမ်း၊ ဗာကရာလမ်း) · <b>Tamwe</b> (တာမွေဈေး၊ ကျိုက်က္ကဆံဘုရား) · <b>Yankin</b> (ရန်ကင်းစင်တာ၊ မိုးကောင်းဘုရား၊ ကန်တော်ကြီး မြောက်ဘက်)။ Taxi / YBS Route 37 (မှတ်တိုင် ၁၀ ခု) / Delivery mission တွေ မြို့နယ်အသစ်တွေဆီ ရောက်တယ်။<br>📌 <b>မှတ်ချက်:</b> မြို့နယ်တွေရဲ့ အချင်းချင်း အနေအထားနဲ့ လမ်းနာမည်အစစ်တွေ သုံးထားပေမယ့် <b>landmark နေရာတွေက အနီးစပ်ဆုံး ခန့်မှန်းချက် (approximate)</b> ပါ — ဂိမ်းကစားဖို့ အဆင်ပြေအောင် မြေပုံကို ရိုးရှင်းအောင် ချုံ့ထားတာပါ။ District positions and real street names are used, but landmark placements are approximate and simplified for gameplay.</p>
+<p style="font-size:12px;opacity:.95;background:rgba(239,67,3,.10);border:1px solid rgba(239,67,3,.45);padding:8px 10px;margin-top:10px">🆕 <b>VERSION 1.1.23</b> — Player တွေ တောင်းဆိုထားတဲ့ မြို့အသစ်တွေ ပါလာပြီ: <b>အင်းစိန် · တောင်ဥက္ကလာပ · မြောက်ဥက္ကလာပ (မယ်လမုဘုရား) · သင်္ဃန်းကျွန်း (သုဝဏ္ဏကွင်း) · ရန်ကင်း တိုးချဲ့ · လှိုင်မြောက်ဘက်</b>။ ရှိပြီးသား <b>ကြည့်မြင်တိုင် · သာကေတ · လှိုင် · အလုံ · တာမွေ · ကမာရွတ်</b> တွေကိုလည်း မြေနေရာ ထပ်ချဲ့ထားတယ်။ <b>မန္တလေး</b> (မြို့အနောက်ဘက် · မဟာမုနိ တောင်ဘက် · ကျောက်စိမ်းဈေး) နဲ့ <b>တောင်ကြီး</b> (မြို့ထဲ · မီးပုံးပျံကွင်း · ရွှေဖုန်းပွင့်ဘုရား · တောင်/မြောက်) ပါ ထပ်ပါလာတယ်။<br/>🚪 <b>အဆောက်အဦး အတွင်း ဝင်လို့ရပြီ</b> — 🚪 ENTER ဆိုင်းရှိတဲ့ လက်ဖက်ရည်ဆိုင်/ဆိုင်တွေနား လမ်းလျှောက်သွားပြီး <b>E</b> နှိပ်ပါ။ &nbsp;🛒 <b>ရှာထားတဲ့ငွေ ပြန်သုံးလို့ရပြီ</b> — Spend menu မှာ အစားအသောက်/ဆေး/ဒဏ်ကြေး/လိုင်စင် ဝယ်ပါ။ &nbsp;👕 <b>အဝတ်အစား ရွေးလို့ရပြီ</b> · 🏆 <b>Rank ကြည့်လို့ရပြီ</b>။<br/>🗺️ <b>မြို့အချင်းချင်း သွားနည်း:</b> ရန်ကုန်/မန္တလေး/တောင်ကြီးဟာ သီးခြား zone တွေမို့ <b>[T] Travel menu</b> (သို့ Highway Gate) ကနေ Fast Travel ခုန်ရပါတယ် — ကားနဲ့အတူ ပြောင်းပေးတယ်။<br/>📌 <b>ရိုးသားစွာ မှတ်ချက်:</b> Landmark နေရာတွေက <b>အနီးစပ်ဆုံး ခန့်မှန်းချက် (approximate)</b> ပါ — အဆောက်အဦး/အိမ်ပုံစံ အသေးစိတ်ကို နောက် version တွေမှာ ဆက်ပြီး ပိုတိကျအောင် လုပ်သွားပါမယ်။ နောက်လာမယ့်ဟာ: Level + ငွေနဲ့ ကား/ဆိုက်ကား ဝယ်တာ၊ ကိုယ့်ကား နံပါတ်ပြား စိတ်ကြိုက်တပ်တာ။</p>
 <div id="loadWrap" style="margin-top:14px">
   <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:1px"><span>LOADING · မြို့ကို တည်ဆောက်နေတယ်</span><span id="loadPct">0%</span></div>
   <div style="height:8px;background:rgba(255,255,255,.12);margin-top:5px"><div id="loadBar" style="height:100%;width:2%;background:#f5c400;transition:width .3s"></div></div>
   <div id="loadTip" style="font-size:11.5px;opacity:.75;margin-top:6px">TIP: E နှိပ်ပြီး လမ်းပေါ်က ကားတိုင်း ဝင်စီးလို့ရတယ် · Press E to enter any car</div>
 </div>
 <button id="playBtn" disabled style="opacity:.45">▶ &nbsp;LOADING…</button>
-    <div class="row" style="margin-top:10px;flex-wrap:nowrap">
+    <div class="row" style="margin-top:10px;flex-wrap:wrap">
       <button class="mbtn" id="btnMenuGarage">🏠 GARAGE & PROPERTIES</button>
       <button class="mbtn" id="btnMenuControls">🎮 CONTROLS</button>
       <button class="mbtn" id="btnMenuWheel">🎡 VEHICLE WHEEL</button>
+      <button class="mbtn" id="btnMenuTravel">🗺️ TRAVEL · မြို့ပြောင်း</button>
+      <button class="mbtn" id="btnMenuRank">🏆 RANK</button>
     </div>
     <div id="controlsPanel" style="display:none;margin-top:10px;font-size:12.5px;line-height:1.9;background:rgba(255,255,255,.05);padding:10px 12px;border:1px solid rgba(255,255,255,.14)">⌨️ <b>Laptop:</b> WASD / Arrow Keys မောင်း (မြန်မာ keyboard layout နဲ့လည်း ရတယ်) · Mouse drag = Camera · E = Enter/Exit car · F = Exit · Space = Handbrake · 1/2/3 = Vehicle · Q = Wheel · C = Camera · R = Radio · N = Night · M = Mute · Esc = Pause · B = Buy house · 📊 FPS button (top bar) = FPS counter on/off — the game auto-adjusts quality to hold 60 fps<br>📱 <b>Phone:</b> Left joystick = steer + throttle · ▲ = Gas · ▼ = Brake/Reverse · 🌀 = Drift · 🚪 = Enter · 📷 = Camera · ⏸ = Pause</div>
     <p style="font-size:11px;opacity:.7;text-align:center">ရန်ကုန် တစ်မြို့လုံး လွတ်လပ်စွာ — Taxi fare · YBS route · Delivery Jobs နဲ့ Ks ရှာ၊ အိမ်/ကား ဝယ်ပါ</p>
@@ -343,7 +383,7 @@ function cyl(rt,rb,h,mat,x,y,z,parent,seg){var ms=new THREE.Mesh(new THREE.Cylin
 function label(text,x,y,z,color){var c=document.createElement('canvas');c.width=512;c.height=128;var g=c.getContext('2d');g.fillStyle='rgba(0,0,0,0.65)';g.beginPath();(g.roundRect?g.roundRect(6,18,500,92,18):g.rect(6,18,500,92));g.fill();g.font='bold 44px system-ui';g.textAlign='center';g.fillStyle=color||'#fff';g.fillText(text,256,78);var t=new THREE.CanvasTexture(c);var s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthWrite:false}));s.scale.set(34,8.5,1);s.position.set(x,y,z);scene.add(s);return s;}
 
 // Ground
-var ground=new THREE.Mesh(new THREE.PlaneGeometry(2100,2100), M(0x4a7c3a,.95)); ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
+var ground=new THREE.Mesh(new THREE.PlaneGeometry(13000,13000), M(0x4a7c3a,.95)); ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
 // Parks / sidewalk base
 box(920,0.4,920, M(0x9aa0a3,.9),0,0.2,0,scene,false).receiveShadow=true;
 
@@ -626,6 +666,161 @@ await tickYield();
  streetSign('Kabar Aye Pagoda Rd','ကမ္ဘာအေးဘုရားလမ်း',283,-467,Math.PI/2); streetSign('Moegaung Pagoda Rd','မိုးကောင်းဘုရားလမ်း',553,-467,Math.PI/2);
  streetSign('Bagaya Road','ဗာကရာလမ်း',-617,-103,Math.PI/2); streetSign('U Wisara Road','ဦးဝိစာရလမ်း',-347,-467,Math.PI/2);
 })();
+
+// ================= v1.1.23 EXPANSION: NEW YANGON DISTRICTS + MANDALAY + TAUNGGYI =================
+// Yangon grows to about +/-1480. Mandalay (x=+4200) and Taunggyi (x=-4200) are separate zones reached by
+// fast travel (Travel menu / [T] / Highway Gates) — the real distances are far too big for one map.
+// Landmark placements are approximate and simplified for gameplay; details keep improving in later versions.
+// Everything here reuses the shared geometry/materials and registers with the same distance-culling list,
+// so the adaptive 60 fps tier system covers the new areas exactly like the old ones.
+(function(){
+ function hRoad(z,x1,x2){ var w=x2-x1,cx=(x1+x2)/2; box(w,0.25,ROAD,roadMat,cx,0.45,z,scene,false); box(w,0.06,0.7,lineMat,cx,0.62,z,scene,false); }
+ function vRoad(x,z1,z2){ var w=z2-z1,cz=(z1+z2)/2; box(ROAD,0.25,w,roadMat,x,0.45,cz,scene,false); box(0.7,0.06,w,lineMat,x,0.62,cz,scene,false); }
+ function plate(x,z,w,d,c){ box(w,0.3,d,M(c,.95),x,0.15,z,scene,false).receiveShadow=true; }
+ var houseMats2=[M(0xf3e5c3,.9),M(0xe8dcc3,.9),M(0xdde3ea,.9),M(0xfde8c8,.9),M(0xe7d8b7,.9)];
+ var roofMats2=[M(0x92400e,.85),M(0x7f1d1d,.85),M(0x374151,.85),M(0x166534,.85),M(0x9a3412,.85)];
+ var roofGeo2=new THREE.ConeGeometry(7.6,3,4);
+ function house2(x,z,ry,steep){ var g=new THREE.Group(); g.position.set(x,0.4,z); g.rotation.y=ry||0; scene.add(g);
+  var b=new THREE.Mesh(bGeo,houseMats2[(Math.random()*houseMats2.length)|0]); b.scale.set(9+Math.random()*3,4.2+Math.random()*1.8,8); b.position.y=b.scale.y/2; b.receiveShadow=true; g.add(b);
+  var rf=new THREE.Mesh(roofGeo2,roofMats2[(Math.random()*roofMats2.length)|0]); rf.position.y=b.scale.y+(steep?2.3:1.4); rf.rotation.y=Math.PI/4; rf.scale.set(1.15,steep?1.7:1,0.95); g.add(rf);
+  box(1.6,2.6,0.3,M(0x5b4632,.85),0,1.3,4.05,g); return g; }
+ function shop2(x,z,ry,txt,col){ var g=new THREE.Group(); g.position.set(x,0.4,z); g.rotation.y=ry||0; scene.add(g);
+  var b=new THREE.Mesh(bGeo,new THREE.MeshStandardMaterial({color:palette[(Math.random()*palette.length)|0],roughness:.85,map:winTex,emissive:0xffc06a,emissiveMap:winGlow,emissiveIntensity:.4})); b.scale.set(13,5.6,9); b.position.y=2.8; b.receiveShadow=true; g.add(b);
+  var pl=new THREE.Mesh(new THREE.PlaneGeometry(9,2.2),new THREE.MeshBasicMaterial({map:signTex(txt,col),side:THREE.DoubleSide})); pl.position.set(0,4.4,4.6); g.add(pl);
+  box(11,.16,2.2,M(0xb45309,.7),0,3.1,5.2,g); solids.push({x:x,z:z,r:4}); }
+ function block2(x,z,w,h,d,col,txt,signCol){ var g=new THREE.Group(); g.position.set(x,0,z); scene.add(g);
+  var b=new THREE.Mesh(bGeo,new THREE.MeshStandardMaterial({color:col,roughness:.8,map:winTex,emissive:0xffc06a,emissiveMap:winGlow,emissiveIntensity:.45})); b.scale.set(w,h,d); b.position.y=h/2+.4; b.receiveShadow=true; g.add(b);
+  box(w+1.4,1.1,d+1.4,M(0x374151,.85),0,h+1,0,g);
+  var pl=new THREE.Mesh(new THREE.PlaneGeometry(Math.min(w*.92,26),3.6),new THREE.MeshBasicMaterial({map:signTex(txt,signCol),side:THREE.DoubleSide})); pl.position.set(0,h-1.6,d/2+.2); g.add(pl);
+  solids.push({x:x,z:z,r:Math.max(w,d)*.55}); return g; }
+ function pagoda2(x,z,sc,txt){ var g=new THREE.Group(); g.position.set(x,0,z); g.scale.setScalar(sc); scene.add(g);
+  var gold=new THREE.MeshStandardMaterial({color:0xe5c158,roughness:.3,metalness:.8,emissive:0xcc7700,emissiveIntensity:.4});
+  cyl(11,13,2.4,M(0x5b8c4a,.9),0,1.2,0,g,18); cyl(7.5,9.5,2.6,gold,0,3.7,0,g,10); cyl(5,7,2.6,gold,0,6.2,0,g,10);
+  var cone=new THREE.Mesh(new THREE.ConeGeometry(4.6,11,14),gold); cone.position.y=12.8; cone.castShadow=true; g.add(cone);
+  cyl(.3,.7,3.4,gold,0,19.6,0,g,8); label(txt,x,24*sc,z,'#fde047'); solids.push({x:x,z:z,r:12*sc}); }
+ function hill(x,z,r,h){ var m=new THREE.Mesh(new THREE.ConeGeometry(r,h,18),M(0x5b8c4a,.95)); m.position.set(x,h/2,z); m.receiveShadow=true; scene.add(m); solids.push({x:x,z:z,r:r*.8}); }
+ // --- connector + ring roads for greater Yangon ---
+ hRoad(-990,-1480,1480); hRoad(-1170,-1480,1480); hRoad(630,-1480,1480);
+ vRoad(990,-1480,900); vRoad(-990,-1480,900); vRoad(1170,-1480,900); vRoad(-1170,-1480,900);
+ [-720,-540,540,720].forEach(function(x){ vRoad(x,-1480,-810); });
+ [-630,-540,0,90,-90].forEach(function(z){ hRoad(z,-1480,-810); hRoad(z,810,1480); });
+ [720,-720].forEach(function(x){ vRoad(x,455,905); });
+ // ================= INSEIN · အင်းစိန် (far north-west) =================
+ plate(-1080,-1080,560,560,0x66755c); label('🏘️ INSEIN · အင်းစိန်',-1080,28,-1080,'#a7f3d0');
+ block2(-1080,-1010,34,7,18,0x92400e,'အင်းစိန်ဈေး','#b45309'); label('🛍️ Insein Market · အင်းစိန်ဈေး',-1080,17,-1010,'#fdba74');
+ block2(-950,-1170,30,10,12,0xd8cfc0,'INSEIN GTI','#166534'); label('🎓 Insein GTI · စက်မှုတက္ကသိုလ် (အင်းစိန်)',-950,21,-1170,'#fff');
+ pagoda2(-1200,-950,0.8,'🛕 Insein Pagoda · အင်းစိန်ဘုရား');
+ shop2(-1170,-1000,0,'TEA SHOP','#b45309'); shop2(-950,-1090,0,'ရွှေဆိုင်','#3b2f0b'); shop2(-1080,-1250,0,'GROCERY','#166534');
+ busStop(-1060,-977,0,'36 • 21'); streetSign('Insein Road','အင်းစိန်လမ်း',-977,-977,Math.PI/2);
+ teaShop(-1040,-1040,Math.PI/4); vendor(-1130,-990,0); parkedCar(-1020,-1030,0,0xfacc15,true);
+ NAMED_H.push({z:-990,xMin:-1480,xMax:-700,en:'Bayintnaung Road',mm:'ဘုရင့်နောင်လမ်း'});
+ NAMED_V.push({x:-990,zMax:-100,en:'Insein Road',mm:'အင်းစိန်လမ်း'});
+ // ================= NORTH HLAING · လှိုင်မြောက်ဘက် =================
+ plate(-620,-1080,420,560,0x5d7350); label('🏘️ NORTH HLAING · လှိုင်မြောက်ဘက်',-620,28,-1080,'#a7f3d0');
+ block2(-620,-1000,28,6.5,15,0xb0724f,'သမိုင်းဈေး','#7c2d12'); label('🛍️ Thamine Market · သမိုင်းဈေး',-620,15,-1000,'#fdba74');
+ pagoda2(-520,-1180,0.75,'🛕 Thamine Pagoda · သမိုင်းဘုရား');
+ shop2(-700,-1090,0,'စားသောက်ဆိုင်','#b91c1c'); shop2(-540,-990,0,'PHARMACY','#1d4ed8');
+ busStop(-700,-977,0,'65 • 21'); streetSign('Thamine Road','သမိုင်းလမ်း',-707,-977,0);
+ betelStall(-660,-1040,0); parkedCar(-580,-1030,0,0x3b82f6,false);
+ // ================= YANKIN EXPANSION · ရန်ကင်း တိုးချဲ့ =================
+ plate(880,-1010,220,700,0x77684f); label('🏘️ YANKIN EXPANSION · ရန်ကင်း တိုးချဲ့',880,26,-880,'#a7f3d0');
+ block2(880,-820,26,9,14,0xcbd5e1,'SAYAR SAN SHOPS','#1d4ed8');
+ shop2(880,-960,0,'CAFE','#7c3aed'); shop2(880,-700,0,'TEA SHOP','#b45309');
+ NAMED_V.push({x:990,zMin:-840,zMax:-460,en:'Sayar San Road',mm:'ဆရာစံလမ်း'});
+ // ================= SOUTH OKKALAPA · တောင်ဥက္ကလာပ =================
+ plate(1080,-680,560,340,0x66785a); label('🏘️ SOUTH OKKALAPA · တောင်ဥက္ကလာပ',1080,28,-680,'#a7f3d0');
+ block2(1080,-620,36,7.5,18,0x92400e,'တောင်ဥက္ကလာပဈေး','#b45309'); label('🛍️ South Okkalapa Market · တောင်ဥက္ကလာပဈေး',1080,17,-620,'#fdba74');
+ pagoda2(1200,-760,0.8,'🛕 S. Okkalapa Pagoda · တောင်ဥက္ကလာပဘုရား');
+ shop2(950,-700,0,'TEA SHOP','#0f766e'); shop2(1210,-640,0,'MOBILE','#7c2d12');
+ busStop(1020,-617,Math.PI,'29 • 42'); streetSign('Waizayandar Road','ဝေဇယန္တာလမ်း',1003,-617,Math.PI/2);
+ teaShop(1120,-700,0); parkedCar(1000,-660,Math.PI/2,0xef4444,false);
+ NAMED_H.push({z:-630,xMin:840,xMax:1480,en:'Waizayandar Road',mm:'ဝေဇယန္တာလမ်း'});
+ // ================= NORTH OKKALAPA · မြောက်ဥက္ကလာပ =================
+ plate(1080,-1080,560,560,0x5f6f63); label('🏘️ NORTH OKKALAPA · မြောက်ဥက္ကလာပ',1080,28,-1080,'#a7f3d0');
+ pagoda2(1080,-1150,0.95,'🛕 Melamu Pagoda · မယ်လမုဘုရား');
+ block2(950,-1000,32,7,17,0x92400e,'မြောက်ဥက္ကလာပဈေး','#b45309'); label('🛍️ North Okkalapa Market · မြောက်ဥက္ကလာပဈေး',950,17,-1000,'#fdba74');
+ shop2(1200,-1010,0,'TEA SHOP','#b45309'); shop2(1080,-1250,0,'ရွှေဆိုင်','#3b2f0b');
+ busStop(1020,-977,0,'42 • 64'); streetSign('Thudhamma Road','သုဓမ္မာလမ်း',1003,-977,Math.PI/2);
+ vendor(1130,-990,0); scooter(960,-1030,0.5,0x22c55e);
+ NAMED_V.push({x:990,zMin:-1480,zMax:-840,en:'Thudhamma Road',mm:'သုဓမ္မာလမ်း'});
+ // ================= THINGANGYUN · သင်္ဃန်းကျွန်း =================
+ plate(1080,-180,560,500,0x716552); label('🏘️ THINGANGYUN · သင်္ဃန်းကျွန်း',1080,28,-180,'#fde68a');
+ block2(1150,-180,44,10,30,0x475569,'THUWUNNA STADIUM','#1d4ed8'); label('🏟️ Thuwunna Stadium · သုဝဏ္ဏကွင်း',1150,22,-180,'#93c5fd');
+ block2(950,-100,30,7,16,0x92400e,'သင်္ဃန်းကျွန်းဈေး','#b45309'); label('🛍️ Thingangyun Market · သင်္ဃန်းကျွန်းဈေး',950,17,-100,'#fdba74');
+ shop2(950,-260,0,'TEA SHOP','#b45309'); shop2(1230,-60,0,'GROCERY','#166534');
+ busStop(1020,-167,Math.PI,'27 • 31'); streetSign('Ley Daungkan Road','လေးဒေါင့်ကန်လမ်း',1003,-167,Math.PI/2);
+ teaShop(990,-220,Math.PI/2); parkedCar(1060,-120,0,0xfacc15,true);
+ NAMED_H.push({z:-180,xMin:840,xMax:1480,en:'Ley Daungkan Road',mm:'လေးဒေါင့်ကန်လမ်း'});
+ // ================= KYEEMYINDAING · ကြည့်မြင်တိုင် (expanded west) =================
+ plate(-1080,180,560,500,0x6b7a5e); label('🏘️ KYEEMYINDAING · ကြည့်မြင်တိုင်',-1080,28,180,'#fde68a');
+ block2(-1080,120,34,7,17,0x92400e,'ကြည့်မြင်တိုင်ဈေး','#b45309'); label('🛍️ Kyeemyindaing Market · ကြည့်မြင်တိုင်ဈေး',-1080,17,120,'#fdba74');
+ block2(-1200,260,26,5.5,14,0x0f766e,'စံပြငါးဈေး','#0f766e'); label('🐟 San Pya Fish Market · စံပြငါးဈေး',-1200,14,260,'#5eead4');
+ shop2(-950,200,0,'TEA SHOP','#b45309'); shop2(-1150,60,0,'PHARMACY','#1d4ed8');
+ busStop(-1020,193,Math.PI,'22 • 40'); streetSign('Kyeemyindaing','ကြည့်မြင်တိုင်',-977,193,Math.PI/2);
+ vendor(-1100,180,0); betelStall(-1000,140,0);
+ NAMED_V.push({x:-990,zMin:-100,zMax:900,en:'Kyeemyindaing Strand Rd',mm:'ကြည့်မြင်တိုင် ကမ်းနားလမ်း'});
+ // ================= AHLONE · အလုံ (expanded) =================
+ plate(-1080,520,560,340,0x77684f); label('🏘️ AHLONE · အလုံ',-1080,28,520,'#fde68a');
+ block2(-1080,470,28,6.5,15,0xb0724f,'အလုံဈေး','#7c2d12'); label('🛍️ Ahlone Market · အလုံဈေး',-1080,15,470,'#fdba74');
+ shop2(-950,560,0,'TEA SHOP','#0f766e'); shop2(-1200,560,0,'ရွှေဆိုင်','#3b2f0b');
+ busStop(-1020,643,Math.PI,'22 • 57'); teaShop(-1120,500,0);
+ // ================= THAKETA · သာကေတ (expanded) =================
+ plate(1080,520,560,340,0x66785a); label('🏘️ THAKETA · သာကေတ',1080,28,520,'#fde68a');
+ block2(1080,470,32,7,17,0x92400e,'သာကေတဈေး','#b45309'); label('🛍️ Thaketa Market · သာကေတဈေး',1080,17,470,'#fdba74');
+ label('🌉 Thaketa Bridge View · သာကေတတံတား အမြင်',1300,16,640,'#7dd3fc');
+ shop2(950,560,0,'TEA SHOP','#b45309'); shop2(1210,560,0,'MOBILE','#7c2d12');
+ busStop(1020,643,Math.PI,'31 • 34'); vendor(1120,500,0); parkedCar(1000,540,0,0xe5e7eb,false);
+ // --- houses across all the new + expanded Yangon districts (shared geo/mats, distance-culled) ---
+ [[-1000,-1130],[-1150,-1130],[-1000,-900],[-1250,-1080],[-900,-1230],[-1180,-1230],
+  [-560,-1130],[-700,-1180],[-480,-1030],[-700,-900],
+  [830,-900],[930,-900],[830,-760],[930,-1080],
+  [1000,-760],[1160,-560],[950,-560],[1250,-720],
+  [1000,-1180],[1160,-1180],[950,-900],[1250,-950],[1160,-1300],
+  [1000,-300],[950,-350],[1250,-300],[1000,20],
+  [-1000,300],[-1150,330],[-950,40],[-1250,120],
+  [-1000,600],[-1150,620],[-950,440],
+  [1000,600],[1150,620],[950,440],[1250,600],
+  [-450,-900],[-350,-950],[-850,-700],[700,300],[760,380],[300,-900],[-800,-820],[880,300]].forEach(function(hp,i){ house2(hp[0],hp[1],(i%4)*Math.PI/2,false); });
+ // ================= MANDALAY · မန္တလေး (separate zone, x=+4200) =================
+ plate(4200,0,780,780,0x8a6d4a);
+ hRoad(-180,3840,4560); hRoad(0,3840,4560); hRoad(180,3840,4560);
+ vRoad(4020,-390,390); vRoad(4200,-390,390); vRoad(4380,-390,390);
+ label('🏙️ MANDALAY · မန္တလေးမြို့',4200,30,-40,'#fde68a');
+ hill(4280,-370,95,58); pagoda2(4200,-295,0.9,'🛕 Mandalay Hill · မန္တလေးတောင်');
+ pagoda2(4200,300,1.25,'🛕 Mahamuni Pagoda · မဟာမုနိဘုရား');
+ block2(4050,330,40,6,20,0x065f46,'JADE MARKET','#065f46'); label('💎 Jade Market · ကျောက်စိမ်းဈေး (မဟာမုနိ တောင်ဘက်)',4050,16,330,'#6ee7b7');
+ block2(3900,0,30,8,16,0xb0724f,'WEST MANDALAY','#7c2d12'); label('🏘️ West Mandalay · မန္တလေး အနောက်မြို့',3900,19,0,'#fff');
+ block2(4380,120,26,9,14,0xd8cfc0,'MANDALAY PALACE VIEW','#7c2d12');
+ shop2(4100,-60,0,'လက်ဖက်ရည်ဆိုင်','#b45309'); shop2(4300,60,0,'ရွှေဆိုင်','#3b2f0b'); shop2(4100,230,0,'GROCERY','#166534');
+ teaShop(4150,20,0); vendor(4250,-40,Math.PI/2); betelStall(4080,-120,0);
+ busStop(4150,-167,0,'MDY 7'); busStop(4250,193,Math.PI,'MDY 12');
+ parkedCar(4300,-120,0,0xfacc15,true); parkedCar(3980,60,Math.PI/2,0xef4444,false); scooter(4180,90,0.7,0x3b82f6);
+ streetSign('62nd Street','၆၂ လမ်း',4213,-167,Math.PI/2); streetSign('Mahamuni','မဟာမုနိ',4150,287,0);
+ [[3980,-260],[4100,-260],[4450,-260],[4450,60],[3980,200],[4500,260],[4320,-260],[3900,-120]].forEach(function(hp,i){ house2(hp[0],hp[1],(i%4)*Math.PI/2,false); });
+ NAMED_H.push({z:0,xMin:3840,xMax:4560,en:'26th Street · Mandalay',mm:'၂၆ လမ်း · မန္တလေး'},{z:180,xMin:3840,xMax:4560,en:'35th Street · Mandalay',mm:'၃၅ လမ်း'},{z:-180,xMin:3840,xMax:4560,en:'Sagaing–Mandalay Road',mm:'စစ်ကိုင်း–မန္တလေးလမ်း'});
+ NAMED_V.push({x:4200,en:'62nd Street · Mandalay',mm:'၆၂ လမ်း'},{x:4020,en:'West Moat Road · Mandalay',mm:'အနောက် ကျုံးလမ်း'});
+ // ================= TAUNGGYI · တောင်ကြီး (separate zone, x=-4200) =================
+ plate(-4200,0,780,780,0x4f6b4a);
+ hRoad(-150,-4560,-3840); hRoad(0,-4560,-3840); hRoad(150,-4560,-3840);
+ vRoad(-4380,-390,390); vRoad(-4200,-390,390); vRoad(-4020,-390,390);
+ label('🏙️ TAUNGGYI · တောင်ကြီးမြို့',-4200,30,-40,'#a7f3d0');
+ label('🏘️ North Taunggyi · တောင်ကြီး မြောက်ဘက်',-4200,22,-340,'#a7f3d0');
+ hill(-3880,-300,80,50); pagoda2(-3950,-250,1.0,'🛕 Shwe Phone Pwint Pagoda · ရွှေဖုန်းပွင့်ဘုရား');
+ plate(-4200,300,430,150,0x6aa84f);
+ [[-4280,300,0xef4444],[-4200,322,0xf59e0b],[-4120,292,0x3b82f6]].forEach(function(bl){ var g=new THREE.Group(); g.position.set(bl[0],15+Math.random()*5,bl[1]); scene.add(g);
+  var env=new THREE.Mesh(new THREE.SphereGeometry(3.4,12,10),M(bl[2],.6)); env.scale.y=1.25; env.castShadow=true; g.add(env); box(0.7,0.9,0.7,M(0x78350f,.85),0,-4.6,0,g); cyl(0.03,0.03,1.1,M(0x44403c,.8),0,-3.9,0,g,6); });
+ label('🎈 Tazaungdaing Balloon Field · မီးပုံးပျံကွင်း (တောင်ကြီး တောင်ဘက်)',-4200,26,300,'#fda4af');
+ block2(-4200,-60,36,7,18,0x92400e,'တောင်ကြီးဈေး','#b45309'); label('🛍️ Taunggyi Market · မြို့မဈေး',-4200,17,-60,'#fdba74');
+ shop2(-4320,40,0,'CAFE','#7c3aed'); shop2(-4080,-40,0,'TEA SHOP','#b45309'); shop2(-4320,-220,0,'ရွှေဆိုင်','#3b2f0b');
+ teaShop(-4150,60,Math.PI/4); vendor(-4280,-100,0);
+ busStop(-4250,-137,0,'TGY 3'); parkedCar(-4100,80,0,0xfacc15,true); parkedCar(-4300,-60,Math.PI/2,0x22c55e,false);
+ streetSign('Taunggyi','တောင်ကြီး',-4187,-137,Math.PI/2);
+ for(var tp2=0;tp2<10;tp2++){ makeTree(-4520+Math.random()*640, tp2%2? 330+Math.random()*40 : -370+Math.random()*40, 1.1); } // pine-town edge trees
+ [[-4450,-260],[-4320,-280],[-4080,200],[-4450,120],[-3980,120],[-4320,240],[-4080,-280],[-3980,-120]].forEach(function(hp,i){ house2(hp[0],hp[1],(i%4)*Math.PI/2,true); }); // steep roofs — hill-town houses
+ NAMED_H.push({z:0,xMin:-4560,xMax:-3840,en:'Bogyoke Aung San Rd · Taunggyi',mm:'ဗိုလ်ချုပ်လမ်း · တောင်ကြီး'});
+ NAMED_V.push({x:-4200,en:'Main Road · Taunggyi',mm:'ပင်မလမ်း · တောင်ကြီး'});
+})();
+
 // ================= BILLBOARDS =================
 function adTex(main,sub,bg,fg,accent){var c=document.createElement('canvas');c.width=1024;c.height=512;var g=c.getContext('2d');g.fillStyle=bg;g.fillRect(0,0,1024,512);g.fillStyle=accent;g.beginPath();g.arc(880,90,120,0,7);g.fill();g.beginPath();g.arc(90,440,90,0,7);g.fill();g.fillStyle='rgba(255,255,255,.16)';g.fillRect(0,360,1024,10);g.textAlign='center';g.fillStyle=fg;g.font='900 118px system-ui, sans-serif';g.fillText(main,512,238);g.font='bold 54px system-ui';g.fillText(sub,512,340);g.font='bold 40px system-ui';g.fillStyle=accent==fg?'#fff':accent;g.fillText('★ ★ ★',512,440);var t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
 var ADS=[
@@ -882,6 +1077,27 @@ busStopsM.push(
  {n:'Tamwe Market • တာမွေဈေး မှတ်တိုင်',x:620,z:103},{n:'Yankin Centre • ရန်ကင်းစင်တာ မှတ်တိုင်',x:653,z:-607});
 // street-life talking pairs in the new districts (spawned here: peds[] exists by this point in init)
 makeTalker(-478,-478,0,0x3b82f6,0xfacc15); makeTalker(150,-540,Math.PI,0xef4444,0x22c55e); makeTalker(596,28,0,0xec4899,0x8b5cf6); makeTalker(626,-592,Math.PI,0xf8fafc,0x0ea5e9);
+// ---- v1.1.23: missions, YBS stops and people reach the new districts + both new cities ----
+dests.push(
+ {n:'Insein Market • အင်းစိန်ဈေး',x:-1080,z:-982},{n:'Melamu Pagoda • မယ်လမုဘုရား',x:1080,z:-1122},
+ {n:'Thuwunna Stadium • သုဝဏ္ဏကွင်း',x:1120,z:-152},{n:'South Okkalapa Market • တောင်ဥက္ကလာပဈေး',x:1080,z:-592},
+ {n:'Kyeemyindaing Market • ကြည့်မြင်တိုင်ဈေး',x:-1080,z:148},{n:'Thamine • သမိုင်း',x:-620,z:-972},
+ {n:'Mahamuni Pagoda (Mandalay) • မဟာမုနိ — Travel [T] လိုတယ်',x:4178,z:278},{n:'Jade Market (Mandalay) • ကျောက်စိမ်းဈေး — Travel [T]',x:4050,z:302},
+ {n:'Taunggyi Market • တောင်ကြီးဈေး — Travel [T] လိုတယ်',x:-4200,z:-32},{n:'Balloon Field (Taunggyi) • မီးပုံးပျံကွင်း — Travel [T]',x:-4200,z:272});
+pickupSpots.push(
+ {n:'Insein Market • အင်းစိန်ဈေး',x:-1064,z:-982},{n:'Thingangyun • သင်္ဃန်းကျွန်း',x:1020,z:-152},
+ {n:'Mandalay Hill • မန္တလေးတောင်',x:4184,z:-272},{n:'Taunggyi Downtown • တောင်ကြီးမြို့ထဲ',x:-4184,z:-32});
+busStopsM.push(
+ {n:'Insein • အင်းစိန် မှတ်တိုင်',x:-1060,z:-977},{n:'N. Okkalapa • မြောက်ဥက္ကလာပ မှတ်တိုင်',x:1020,z:-977},
+ {n:'Thingangyun • သင်္ဃန်းကျွန်း မှတ်တိုင်',x:1020,z:-167});
+makeTalker(-1040,-1040,0,0xf97316,0x14b8d6); makeTalker(1044,-1044,Math.PI,0x22c55e,0xec4899); makeTalker(4160,30,0,0x3b82f6,0xfacc15); makeTalker(-4160,50,Math.PI/4,0xef4444,0x22c55e);
+// pedestrians in the new districts + both new cities (same shared system, distance-culled per tier)
+makePed('h',-976.6,1,-1450,1450); makePed('h',-1156.6,-1,-1450,1450); makePed('h',643.4,1,-1450,1450);
+makePed('v',1003.4,1,-1450,-450); makePed('v',-976.6,-1,-1450,-450); makePed('v',1156.6,1,-450,850); makePed('v',-1156.6,-1,-100,850);
+makePed('h',13.4,1,3840,4560); makePed('h',-166.6,-1,3840,4560); makePed('v',4213.4,1,-380,380);
+makePed('h',13.4,-1,-4560,-3840); makePed('h',163.4,1,-4560,-3840); makePed('v',-4186.6,-1,-380,380);
+makeWaiter(-1058,-974,0); makeWaiter(1022,-974,Math.PI); makeWaiter(4152,-164,0); makeWaiter(-4248,-134,0);
+
 
 
 // Input
@@ -899,7 +1115,7 @@ addEventListener('keydown',function(e){ var kn=keyName(e), c=e.code||'', kl=(e.k
  if(c==='KeyH'||kl==='h')horn();
  if(c==='KeyC'||kl==='c'){camMode=(camMode+1)%3; showFeed('📷 Camera — '+(camMode===0?'Chase Cam':camMode===1?'Top View':'Hood Cam'));}
  if(c==='KeyM'||kl==='m')setMuted(!muted);
- if(c==='KeyR'||kl==='r')toggleRadio(); if(c==='KeyN'||kl==='n')toggleDayNight(); if(c==='KeyE'||kl==='e')toggleEnter(); if(c==='KeyF'||kl==='f')exitVehicle(); if(c==='KeyQ'||kl==='q')toggleWheel(); if(c==='KeyB'||kl==='b')tryBuyHouseNear(); });
+ if(c==='KeyR'||kl==='r')toggleRadio(); if(c==='KeyN'||kl==='n')toggleDayNight(); if(c==='KeyE'||kl==='e')toggleEnter(); if(c==='KeyF'||kl==='f')exitVehicle(); if(c==='KeyQ'||kl==='q')toggleWheel(); if(c==='KeyB'||kl==='b')tryBuyHouseNear(); if(c==='KeyT'||kl==='t')toggleTravel(); if(c==='KeyO'||kl==='o')toggleOutfit(); if(c==='KeyL'||kl==='l')toggleRanks(); });
 addEventListener('keyup',function(e){keys[keyName(e)]=false;});
 addEventListener('blur',function(){ for(var bk in keys)keys[bk]=false; });
 function bindBtn(id,prop){var el=document.getElementById(id); function on(e){e.preventDefault(); touch[prop]=true; el.classList.add('on'); startGame();} function off(e){e.preventDefault(); touch[prop]=false; el.classList.remove('on');} el.addEventListener('pointerdown',on); el.addEventListener('pointerup',off); el.addEventListener('pointerleave',off); el.addEventListener('pointercancel',off);}
@@ -935,7 +1151,8 @@ box(0.36,0.46,0.14,M(0xfacc15,.6),0.42,0.95,0.16,passenger); addGlowLocal(passen
 var parcel=new THREE.Group(); parcel.userData.dyn=1; parcel.visible=false;
 box(0.95,0.95,0.95,M(0xb45309,.8),0,0,0,parcel); box(0.99,0.22,0.99,M(0xfacc15,.6),0,0.12,0,parcel); addGlowLocal(parcel,0,1.2,0,2.6); scene.add(parcel);
 function bigToast(main,sub){ var t=document.getElementById('toast'); document.getElementById('toastMain').textContent=main; document.getElementById('toastSub').textContent=sub; t.style.opacity='1'; t.style.transform='translate(-50%,-50%) scale(1)'; setTimeout(function(){t.style.opacity='0'; t.style.transform='translate(-50%,-50%) scale(.94)';},2300); }
-function earn(amount,label){ score+=amount; setScore(); bigToast('MISSION PASSED',label+' · +'+fmtKs(amount)+' Ks'); blip(880,.14); setTimeout(function(){blip(1174,.22)},130); showFeed('💰 <b>+'+fmtKs(amount)+' Ks</b> — '+label); }
+var fareBonus=false;
+function earn(amount,label){ if(fareBonus){ amount=Math.round(amount*1.5/100)*100; fareBonus=false; label+=' · 🎟️ Pro License +50%'; } score+=amount; setScore(); bigToast('MISSION PASSED',label+' · +'+fmtKs(amount)+' Ks'); blip(880,.14); setTimeout(function(){blip(1174,.22)},130); showFeed('💰 <b>+'+fmtKs(amount)+' Ks</b> — '+label); }
 function assignMission(){ MISS.hold=0; MISS.stopIdx=0;
  if(cur==='taxi'){ MISS.type='taxi'; MISS.stage='pickup'; var f=pickupSpots[(Math.random()*pickupSpots.length)|0]; MISS.from=f; var t=dests[(Math.random()*dests.length)|0]; if(Math.hypot(t.x-f.x,t.z-f.z)<90) t=dests[((Math.random()*dests.length)|0)]; MISS.to=t; passenger.visible=true; passenger.position.set(f.x,0.55,f.z); parcel.visible=false; setObjective(f.x,f.z); document.getElementById('missionTxt').textContent='🚕 TAXI FARE · ခရီးသည် စောင့်နေတယ် — '+f.n+' မှာ သွားကြိုပါ (ရပ်ပြီး စောင့်ပေးပါ)'; showMissionCard('🚕 TAXI FARE','ခရီးသည် သွားကြိုပါ · Pick up at '+f.n); }
  else if(cur==='bus'){ MISS.type='bus'; MISS.stage='route'; var s=busStopsM[0]; passenger.visible=false; parcel.visible=false; setObjective(s.x,s.z); document.getElementById('missionTxt').textContent='🚌 YBS ROUTE 37 · မှတ်တိုင် 1/'+busStopsM.length+' — '+s.n+' မှာ ရပ်ပေးပါ'; showMissionCard('🚌 YBS ROUTE 37','မှတ်တိုင်တိုင်းမှာ ရပ်ပေးပါ · '+busStopsM.length+' stops — မှတ်တိုင်စီ +2,000 Ks'); }
@@ -966,23 +1183,24 @@ var onFoot=false, walkHeading=heading, lastVehKey='taxi';
 var vehState={}; // where each mission vehicle was left parked {x,z,h}
 var driveRef={type:'veh',key:'taxi'};
 var camYaw=0, camPitch=0;
-function showOverlay(id){ ['pauseMenu','shopMenu','vehWheel'].forEach(function(o){ document.getElementById(o).style.display=(o===id)?'flex':'none'; }); }
+function showOverlay(id){ ['pauseMenu','shopMenu','vehWheel','spendMenu','outfitMenu','rankMenu','travelMenu'].forEach(function(o){ document.getElementById(o).style.display=(o===id)?'flex':'none'; }); }
 function showMissionCard(t,s){ var c=document.getElementById('missionCard'); document.getElementById('mcTitle').textContent=t; document.getElementById('mcSub').textContent=s; c.classList.remove('show'); void c.offsetWidth; c.classList.add('show'); }
 function setFreeRoam(){ document.getElementById('missionTxt').textContent='🚗 FREE ROAM · လွတ်လပ်စွာ မောင်းပါ — Taxi / YBS / Bike ပြန်စီးမှ Mission ဆက်လုပ်မယ်'; beacon.visible=false; ring.visible=false; }
 // ---- on-foot character (GTA third person) ----
+var outfitMats={shirt:M(0x2563eb,.85),longyi:M(0x1e3a5f,.85)}; // v1.1.23 outfit picker recolours these two shared materials
 var walker=new THREE.Group(); walker.userData.dyn=1;
 (function(){ var sc=0x2563eb, lc=0x1e3a5f;
- box(0.54,0.64,0.3,M(sc,.85),0,1.2,0,walker); box(0.44,0.16,0.44,M(0x1c1917,.92),0,1.9,0,walker);
+ box(0.54,0.64,0.3,outfitMats.shirt,0,1.2,0,walker); box(0.44,0.16,0.44,M(0x1c1917,.92),0,1.9,0,walker);
  var hd=new THREE.Mesh(new THREE.SphereGeometry(0.22,12,10),M(0xe8b08a,.65)); hd.position.y=1.74; hd.castShadow=true; walker.add(hd);
- function leg(side){var p=new THREE.Group(); p.position.set(side*0.12,0.94,0); box(0.17,0.92,0.17,M(lc,.85),0,-0.46,0,p); walker.add(p); return p;}
- function arm(side){var p=new THREE.Group(); p.position.set(side*0.35,1.46,0); box(0.14,0.62,0.14,M(sc,.85),0,-0.29,0,p); walker.add(p); return p;}
+ function leg(side){var p=new THREE.Group(); p.position.set(side*0.12,0.94,0); box(0.17,0.92,0.17,outfitMats.longyi,0,-0.46,0,p); walker.add(p); return p;}
+ function arm(side){var p=new THREE.Group(); p.position.set(side*0.35,1.46,0); box(0.14,0.62,0.14,outfitMats.shirt,0,-0.29,0,p); walker.add(p); return p;}
  walker.userData.l1=leg(1); walker.userData.l2=leg(-1); walker.userData.a1=arm(1); walker.userData.a2=arm(-1);
  box(0.34,0.44,0.14,M(0x78350f,.8),0,1.05,-0.24,walker); // backpack
 })();
 walker.visible=false; scene.add(walker);
 function saveCurrentVehState(){ if(onFoot)return; if(driveRef.type==='veh'){ vehState[driveRef.key]={x:pos.x,z:pos.z,h:heading}; } else if(driveRef.type==='traffic'){ driveRef.ref.parked=true; driveRef.ref.jacked=false; } }
 function exitVehicle(){ if(onFoot||mode!=='playing')return; if(driveRef.type==='owned')driveRef.ref.heading=heading; saveCurrentVehState(); speed=0; onFoot=true; walker.visible=true;
- pos.x+=Math.cos(heading)*2.6; pos.z-=Math.sin(heading)*2.6; pos.x=Math.max(-815,Math.min(815,pos.x)); pos.z=Math.max(-815,Math.min(815,pos.z)); walkHeading=heading;
+ pos.x+=Math.cos(heading)*2.6; pos.z-=Math.sin(heading)*2.6; pos.x=Math.max(-5800,Math.min(5800,pos.x)); pos.z=Math.max(-5800,Math.min(5800,pos.z)); walkHeading=heading;
  beacon.visible=false; ring.visible=false; document.getElementById('gearTxt').textContent='ON FOOT 🚶 · လမ်းလျှောက်';
  showFeed('🚶 ကားပေါ်က ဆင်းပြီ — ကားက ရပ်ထားတဲ့နေရာမှာပဲ ရှိတယ် · E = ပြန်ဝင်'); blip(520,.07); }
 function nearestEnterable(){ var best=null,bd=49;
@@ -996,7 +1214,7 @@ function enterRef(r){ if(!r)return;
  else if(r.type==='owned'){ useOwned(r.ref); }
  else { var t=r.ref; t.jacked=true; driveRef={type:'traffic',ref:t}; VS=t.spec; player=t.g; pos.set(t.g.position.x,0,t.g.position.z); heading=t.g.rotation.y+Math.PI/2; speed=0; onFoot=false; walker.visible=false; beacon.visible=false; ring.visible=false; setFreeRoam(); document.getElementById('gearTxt').textContent='STOLEN RIDE 🚗 · လမ်းပေါ်ကား'; crankStart(); }
  if(r.type!=='veh'){ showFeed('🚗 ကားထဲ ဝင်ပြီ — မောင်းလို့ရပြီ · E/F = ပြန်ဆင်း'); blip(660,.07); } }
-function toggleEnter(){ if(mode!=='playing'||paused)return; if(onFoot){ var ne=nearestEnterable(); if(ne)enterRef(ne); else showFeed('🚗 အနီးမှာ ကား မရှိဘူး — ကားတစ်စီးနား သွားပါ'); } else exitVehicle(); }
+function toggleEnter(){ if(mode!=='playing'||paused)return; if(typeof insideBld!=='undefined'&&insideBld){ exitInterior(); return; } if(onFoot){ var nd0=nearDoor(); if(nd0){ enterInterior(nd0); return; } var ne=nearestEnterable(); if(ne)enterRef(ne); else showFeed('🚗 အနီးမှာ ကား မရှိဘူး — ကားတစ်စီးနား သွားပါ'); } else exitVehicle(); }
 // ---- lifestyle: houses for sale ----
 var houses=[
  {name:'Downtown Apartment · တိုက်ခန်း',price:120000,x:118,z:-208,owned:false,kind:0},
@@ -1094,8 +1312,96 @@ var joyX=0, joyY=0;
  addEventListener('pointerup',function(){ drag=false; }); })();
 refreshShop(); refreshWheel();
 
+
+// ================= v1.1.23 SYSTEMS: enterable buildings · spendable money · outfits · ranks · city travel =================
+var insideBld=null, savedReturn=null, runBoostT=0;
+var ROOMS=[{x:2400,z:2400},{x:2650,z:2400},{x:2900,z:2400},{x:3150,z:2400}];
+function buildRoom(i,type){ var rm=ROOMS[i], cx=rm.x, cz=rm.z;
+ var floorC=[0x8a6d4a,0x78716c,0x065f46,0x6d4c2f][type], wallC=[0xe7d8b7,0xd8cfc0,0xa7f3d0,0xfde8c8][type];
+ box(18,0.3,14,M(floorC,.9),cx,0.15,cz,scene,false).receiveShadow=true;
+ box(18,2.8,0.4,M(wallC,.9),cx,1.4,cz-7,scene,false); box(18,2.8,0.4,M(wallC,.9),cx,1.4,cz+7,scene,false);
+ box(0.4,2.8,14,M(wallC,.9),cx-9,1.4,cz,scene,false); box(0.4,2.8,14,M(wallC,.9),cx+9,1.4,cz,scene,false);
+ box(2.4,2.9,0.24,new THREE.MeshStandardMaterial({color:0x22c55e,emissive:0x22c55e,emissiveIntensity:.7,roughness:.5}),cx,1.45,cz+6.75,scene,false); // glowing exit door
+ addGlow(cx,2.2,cz+6.4,5,glowWarm,.6);
+ if(type===0){ box(5,1,1.4,M(0x92400e,.85),cx,0.95,cz-4.5,scene,false); // tea-shop counter
+  [[-4,-1],[0.5,-1],[4.5,-1],[-2,2.5],[3,2.5]].forEach(function(tp){ cyl(.62,.62,.07,M(0xe7e5e4,.45),cx+tp[0],1.0,cz+tp[1],scene,false,12); cyl(.34,.3,.5,M(0xef4444,.6),cx+tp[0]+1,0.7,cz+tp[1],scene,false,10); cyl(.34,.3,.5,M(0x3b82f6,.6),cx+tp[0]-1,0.7,cz+tp[1],scene,false,10); cyl(.09,.07,.1,M(0xf8fafc,.35),cx+tp[0]+0.2,1.09,cz+tp[1],scene,false,8); });
+  label('🍵 TEA SHOP · လက်ဖက်ရည်ဆိုင် (အတွင်း)',cx,5.6,cz,'#ffd166'); }
+ else if(type===1){ for(var sh=0;sh<3;sh++){ box(4.6,2.2,0.9,M(0x78716c,.7),cx-5+sh*5,1.25,cz-4.5,scene,false); for(var gb=0;gb<4;gb++) box(0.55,0.55,0.55,M([0xef4444,0x84cc16,0xfacc15,0xf97316][gb],.6),cx-6.6+sh*5+gb*1.05,1.9,cz-4.4,scene,false); }
+  box(5,1,1.4,M(0x166534,.8),cx,0.95,cz+2,scene,false); label('🛒 GROCERY · ကုန်စုံဆိုင် (အတွင်း)',cx,5.6,cz,'#86efac'); }
+ else if(type===2){ for(var jd=0;jd<3;jd++){ box(3.6,1.1,1.2,new THREE.MeshStandardMaterial({color:0x065f46,roughness:.3,emissive:0x10b981,emissiveIntensity:.25}),cx-5+jd*5,0.85,cz-2,scene,false); for(var jb=0;jb<3;jb++) box(0.5,0.3,0.5,M(0x6ee7b7,.3,.4),cx-6+jd*5+jb*1,1.55,cz-2,scene,false); }
+  addGlow(cx,3,cz-2,7,glowTex('rgba(140,255,200,1)','rgba(16,185,129,.4)'),.5); label('💎 JADE SHOP · ကျောက်စိမ်းဆိုင် (အတွင်း)',cx,5.6,cz,'#6ee7b7'); }
+ else { [[-4,-2],[1,-2],[4.5,1.5],[-2,2.5]].forEach(function(tp){ cyl(.7,.7,.07,M(0x5b4632,.6),cx+tp[0],1.0,cz+tp[1],scene,false,12); cyl(.36,.32,.5,M(0x7c3aed,.6),cx+tp[0]+1.1,0.7,cz+tp[1],scene,false,10); cyl(.09,.07,.12,M(0xf8fafc,.35),cx+tp[0],1.1,cz+tp[1],scene,false,8); });
+  label('☕ CAFE · ကော်ဖီဆိုင် (အတွင်း)',cx,5.6,cz,'#c4b5fd'); }
+}
+buildRoom(0,0); buildRoom(1,1); buildRoom(2,2); buildRoom(3,3);
+var DOORS=[
+ {name:'🍵 Downtown Tea Shop · လက်ဖက်ရည်ဆိုင်',x:24,z:9,room:0},
+ {name:'🛒 Bahan Grocery · ကုန်စုံဆိုင်',x:52,z:-498,room:1},
+ {name:'💎 Jade Market Shop · ကျောက်စိမ်းဆိုင်',x:4058,z:318,room:2},
+ {name:'☕ Taunggyi Cafe · ကော်ဖီဆိုင်',x:-4180,z:14,room:3}];
+DOORS.forEach(function(d){ box(0.3,3,0.3,M(0x92400e,.8),d.x-1.3,1.9,d.z,scene,false); box(0.3,3,0.3,M(0x92400e,.8),d.x+1.3,1.9,d.z,scene,false); box(2.9,0.3,0.3,M(0x92400e,.8),d.x,3.5,d.z,scene,false); addGlow(d.x,2,d.z,6,glowWarm,.65); label('🚪 ENTER · ဝင်ရန်',d.x,5.6,d.z,'#ffd166'); });
+function nearDoor(){ if(insideBld)return null; for(var i=0;i<DOORS.length;i++){ if(Math.hypot(pos.x-DOORS[i].x,pos.z-DOORS[i].z)<7) return DOORS[i]; } return null; }
+function enterInterior(d){ insideBld=d; savedReturn={x:pos.x,z:pos.z,h:walkHeading}; var rm=ROOMS[d.room]; pos.set(rm.x,0,rm.z+4.2); walkHeading=Math.PI; heading=Math.PI; speed=0; beacon.visible=false; ring.visible=false; showFeed('🚪 <b>'+d.name+'</b> အတွင်း ဝင်ပြီ — ပတ်ကြည့်ပါ · ထွက်ရန် <b>E</b>'); blip(700,.09); }
+function exitInterior(){ if(!insideBld)return; var d=insideBld; insideBld=null; if(savedReturn){ pos.set(savedReturn.x,0,savedReturn.z); walkHeading=savedReturn.h; heading=savedReturn.h; } showFeed('🚪 အပြင် ပြန်ထွက်ပြီ — '+d.name); blip(520,.08); }
+// ---- Highway Gates (visual markers for city travel) ----
+function buildGate(x,z,txt){ box(0.5,7,0.5,M(0x374151,.6,.4),x-6,3.5,z,scene,false); box(0.5,7,0.5,M(0x374151,.6,.4),x+6,3.5,z,scene,false); box(13,0.6,0.6,M(0x374151,.6,.4),x,7,z,scene,false); addGlow(x,5,z,10,glowWarm,.5); label(txt,x,10.5,z,'#93c5fd'); }
+buildGate(-990,-1150,'🛣️ HIGHWAY GATE · Travel [T]'); buildGate(4200,-360,'🛣️ MANDALAY GATE · Travel [T]'); buildGate(-4200,-360,'🛣️ TAUNGGYI GATE · Travel [T]');
+// ---- Travel between the three city zones ----
+var CITIES=[{id:'ygn',name:'🏙️ YANGON · ရန်ကုန်',desc:'Downtown + မြို့နယ် ၁၂ ခု — Taxi / YBS / Delivery',x:168,z:-4.5,h:-1.78},
+ {id:'mdy',name:'🏙️ MANDALAY · မန္တလေး',desc:'Mandalay Hill · Mahamuni · Jade Market · West Mandalay',x:4200,z:120,h:Math.PI},
+ {id:'tgy',name:'⛰️ TAUNGGYI · တောင်ကြီး',desc:'မြို့ထဲ · မီးပုံးပျံကွင်း · ရွှေဖုန်းပွင့်ဘုရား · တောင်/မြောက်',x:-4200,z:120,h:Math.PI}];
+function cityHere(){ return pos.x>3400?'mdy':(pos.x<-3400?'tgy':'ygn'); }
+function travelTo(c){ insideBld=null; pos.set(c.x,0,c.z); heading=c.h; walkHeading=c.h; speed=0; showOverlay(null); paused=false; if(mode!=='playing')startGame(); showFeed('🗺️ <b>'+c.name+'</b> ရောက်ပြီ — '+c.desc); bigToast('WELCOME',c.name); blip(880,.15); }
+function refreshTravel(){ var el=document.getElementById('travelList'); if(!el)return; var cur2=cityHere(); var html='<div class="shopHead">📍 အခု ရှိနေတဲ့မြို့ — '+CITIES.filter(function(c){return c.id===cur2;})[0].name+'</div>';
+ CITIES.forEach(function(c){ html+='<div class="shopItem"><span>'+c.name+'<br/><span style="opacity:.7;font-size:12px">'+c.desc+'</span></span>'+(c.id===cur2?'<span style="font-weight:800;color:#a4d233">YOU ARE HERE</span>':'<button class="sbtn" data-city="'+c.id+'">✈️ TRAVEL · သွားမယ်</button>')+'</div>'; });
+ el.innerHTML=html; el.querySelectorAll('button').forEach(function(b){ b.onclick=function(){ CITIES.forEach(function(c){ if(c.id===b.dataset.city)travelTo(c); }); }; }); }
+function toggleTravel(){ var o=document.getElementById('travelMenu'); if(o.style.display==='flex'){ showOverlay(null); } else { refreshTravel(); showOverlay('travelMenu'); } }
+// ---- Spendable money: real effects on the existing wallet / HP / wanted / missions ----
+var SPEND_ITEMS=[
+ {name:'🍵 Tea + Mohinga · လက်ဖက်ရည် + မုန့်ဟင်းခါး',price:1500,desc:'HP +35 ပြန်ဖြည့်',act:function(){ hp=Math.min(100,hp+35); }},
+ {name:'💊 Medicine Kit · ဆေးသေတ္တာ',price:8000,desc:'HP အပြည့် ပြန်ဖြည့်',act:function(){ hp=100; }},
+ {name:'⚡ Energy Drink · အားဖြည့်အချိုရည်',price:3000,desc:'လမ်းလျှောက်/အပြေး မြန် — 60 စက္ကန့်',act:function(){ runBoostT=60; }},
+ {name:'🚔 Pay Traffic Fine · ယာဉ်ထိန်း ဒဏ်ကြေး',price:10000,desc:'Wanted −1★ လျှော့ပေး',act:function(){ if(wanted>0){ wanted--; setStars(); } }},
+ {name:'🎟️ Pro License · ပရို လိုင်စင်',price:15000,desc:'နောက် Mission ဆု +50%',act:function(){ fareBonus=true; }}];
+function refreshSpend(){ var el=document.getElementById('spendList'); if(!el)return; var html='<div class="shopHead">🏦 BANK · ဘဏ် လက်ကျန် — <span style="color:#a4d233">'+fmtKs(score)+' Ks</span></div>';
+ SPEND_ITEMS.forEach(function(it,i){ var dis=score<it.price?' disabled':''; html+='<div class="shopItem"><span>'+it.name+'<br/><span style="opacity:.7;font-size:12px">'+it.desc+'</span></span><button class="sbtn" data-i="'+i+'"'+dis+'>BUY · '+fmtKs(it.price)+' Ks</button></div>'; });
+ el.innerHTML=html; el.querySelectorAll('button').forEach(function(b){ b.onclick=function(){ var it=SPEND_ITEMS[+b.dataset.i]; if(score<it.price){ showFeed('💸 ပိုက်ဆံ မလုံလောက်ဘူး'); blip(160,.2); return; } score-=it.price; setScore(); it.act(); showFeed('🛒 <b>'+it.name+'</b> ဝယ်ပြီးပြီ · −'+fmtKs(it.price)+' Ks'); blip(880,.12); refreshSpend(); }; }); }
+function toggleSpend(){ var o=document.getElementById('spendMenu'); if(o.style.display==='flex'){ showOverlay(null); } else { refreshSpend(); showOverlay('spendMenu'); } }
+// ---- Outfit picker (shirt + longyi) ----
+var OUTFITS=[['Classic Blue · အပြာ',0x2563eb,0x1e3a5f],['Taxi Yellow · အဝါ',0xfacc15,0x7c2d12],['YBS Green · အစိမ်း',0x16a34a,0x14532d],['Pink Pop · ပန်းရောင်',0xec4899,0x581c87],['White Shirt · အဖြူ',0xf8fafc,0x1e3a5f],['Saffron · သင်္ကန်းရောင်',0xc2410c,0x9a3412]];
+var outfitIdx=0;
+function refreshOutfit(){ var el=document.getElementById('outfitList'); if(!el)return; var html='';
+ OUTFITS.forEach(function(o,i){ html+='<div class="shopItem"><span><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#'+o[1].toString(16).padStart(6,'0')+';vertical-align:-2px"></span> <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#'+o[2].toString(16).padStart(6,'0')+';vertical-align:-2px"></span> '+o[0]+'</span>'+(i===outfitIdx?'<span style="font-weight:800;color:#a4d233">WEARING · ဝတ်ထားတယ်</span>':'<button class="sbtn" data-i="'+i+'">WEAR · ဝတ်မယ်</button>')+'</div>'; });
+ el.innerHTML=html; el.querySelectorAll('button').forEach(function(b){ b.onclick=function(){ outfitIdx=+b.dataset.i; var o=OUTFITS[outfitIdx]; outfitMats.shirt.color.setHex(o[1]); outfitMats.longyi.color.setHex(o[2]); showFeed('👕 Outfit ပြောင်းပြီ — <b>'+o[0]+'</b> · လမ်းဆင်းပြီး (E) ကြည့်ပါ'); blip(760,.1); refreshOutfit(); }; }); }
+function toggleOutfit(){ var o=document.getElementById('outfitMenu'); if(o.style.display==='flex'){ showOverlay(null); } else { refreshOutfit(); showOverlay('outfitMenu'); } }
+// ---- Player ranks (by completed missions, with cash/property stats) ----
+var RANKS=[['🌱 Rookie Driver · စတင်သူ',0],['🚕 City Driver · မြို့တွင်း ယာဉ်မောင်း',3],['🚌 Route Pro · လမ်းကြောင်း ပရို',8],['🥇 Yangon Ace · ရန်ကုန် အေ့စ်',15],['👑 Road Legend · လမ်းမတော် ဒဏ္ဍာရီ',25]];
+function rankNow(){ var r=RANKS[0]; RANKS.forEach(function(k){ if(arrived>=k[1])r=k; }); return r; }
+function refreshRanks(){ var el=document.getElementById('rankList'); if(!el)return; var cur2=rankNow(); var html='<div class="shopHead">⭐ ကိုယ့် Rank — <span style="color:#a4d233">'+cur2[0]+'</span></div>';
+ html+='<div style="font-size:13px;line-height:1.7;opacity:.92">🎯 Missions ပြီးစီး: <b>'+arrived+'</b> · 💰 Cash: <b style="color:#a4d233">'+fmtKs(score)+' Ks</b> · 🏠 Houses: '+houses.filter(function(h){return h.owned;}).length+'/'+houses.length+' · 🚗 Cars: '+ownedCars.length+'/3 · 📍 အခု: '+CITIES.filter(function(c){return c.id===cityHere();})[0].name+'</div>';
+ html+='<div class="shopHead">🏆 RANK လှေကား · Ladder</div>';
+ RANKS.forEach(function(k){ var got=arrived>=k[1]; html+='<div class="shopItem"><span>'+(got?'✅ ':'🔒 ')+k[0]+'</span><span style="opacity:.8;font-size:12.5px">'+(got?'ရောက်ပြီ':'Mission '+k[1]+' ခု လို')+'</span></div>'; });
+ var nx=null; RANKS.forEach(function(k){ if(arrived<k[1]&&!nx)nx=k; }); if(nx) html+='<div style="opacity:.75;font-size:12px;padding-top:4px">နောက် Rank ('+nx[0]+') အတွက် Mission နောက် '+(nx[1]-arrived)+' ခု လိုတယ်</div>';
+ el.innerHTML=html; }
+function toggleRanks(){ var o=document.getElementById('rankMenu'); if(o.style.display==='flex'){ showOverlay(null); } else { refreshRanks(); showOverlay('rankMenu'); } }
+// ---- wiring for the new buttons ----
+document.getElementById('btnSpend').onclick=function(){ toggleSpend(); };
+document.getElementById('btnOutfit').onclick=function(){ toggleOutfit(); };
+document.getElementById('btnRank').onclick=function(){ toggleRanks(); };
+document.getElementById('btnTravel').onclick=function(){ toggleTravel(); };
+document.getElementById('btnPauseSpend').onclick=function(){ toggleSpend(); };
+document.getElementById('btnPauseOutfit').onclick=function(){ toggleOutfit(); };
+document.getElementById('btnPauseRank').onclick=function(){ toggleRanks(); };
+document.getElementById('btnPauseTravel').onclick=function(){ toggleTravel(); };
+document.getElementById('btnMenuTravel').onclick=function(){ toggleTravel(); };
+document.getElementById('btnMenuRank').onclick=function(){ toggleRanks(); };
+document.getElementById('btnSpendClose').onclick=function(){ showOverlay(paused?'pauseMenu':null); };
+document.getElementById('btnOutfitClose').onclick=function(){ showOverlay(paused?'pauseMenu':null); };
+document.getElementById('btnRankClose').onclick=function(){ showOverlay(paused?'pauseMenu':null); };
+document.getElementById('btnTravelClose').onclick=function(){ showOverlay(paused?'pauseMenu':null); };
+
 // Location zones
-function zoneName(x,z){ if(Math.hypot((x+200)/125,(z+600)/95)<1)return '🌊 Inya Lake · အင်းလျားကန်'; if(Math.hypot(x+225,z+225)<125)return '🛕 Shwedagon · Bahan'; if(Math.hypot(x,z)<60)return '🏯 Sule Pagoda · Downtown'; if(Math.hypot(x-270,z+90)<95)return '🌊 Kandawgyi · Bahan'; if(Math.hypot(x+280,z-220)<110)return '🌊 Inya Lake · Kamayut'; if(z<-455){ if(x<-460)return '🏘️ Hlaing · လှိုင်'; if(x<-95)return '🎓 Kamayut · ကမာရွတ်'; if(x<460)return '🏘️ Bahan · ဗဟန်း'; return '🏘️ Yankin · ရန်ကင်း'; } if(x<-460)return '🏘️ Sanchaung · စမ်းချောင်း'; if(x>460)return '🏘️ Tamwe · တာမွေ'; if(Math.abs(x)<180&&Math.abs(z)<180)return '🏙️ Downtown Yangon'; if(z<-140)return '🌳 Bahan / Dagon'; if(z>140)return '🏘️ Kamayut / Hlaing'; if(x>140)return '🏘️ Thingangyun'; return '🛣️ Yangon Streets';}
+function zoneName(x,z){ if(x>3400){ if(Math.hypot(x-4200,z+330)<150)return '⛰️ Mandalay Hill · မန္တလေးတောင်'; if(Math.hypot(x-4200,z-300)<130)return '🛕 Mahamuni Pagoda · မဟာမုနိဘုရား'; if(Math.hypot(x-4050,z-330)<110)return '💎 Jade Market · ကျောက်စိမ်းဈေး'; if(x<4000)return '🏘️ West Mandalay · မန္တလေး အနောက်မြို့'; return '🏙️ Mandalay · မန္တလေးမြို့'; } if(x<-3400){ if(Math.hypot(x+3950,z+250)<140)return '🛕 Shwe Phone Pwint · ရွှေဖုန်းပွင့်ဘုရား'; if(Math.hypot(x+4200,z-300)<170)return '🎈 Balloon Field · မီးပုံးပျံကွင်း'; if(z>150)return '🏘️ South Taunggyi · တောင်ကြီး တောင်ဘက်'; if(z<-150)return '🏘️ North Taunggyi · တောင်ကြီး မြောက်ဘက်'; return '🏙️ Taunggyi Downtown · တောင်ကြီးမြို့ထဲ'; } if(Math.hypot((x+200)/125,(z+600)/95)<1)return '🌊 Inya Lake · အင်းလျားကန်'; if(Math.hypot(x+225,z+225)<125)return '🛕 Shwedagon · Bahan'; if(Math.hypot(x,z)<60)return '🏯 Sule Pagoda · Downtown'; if(Math.hypot(x-270,z+90)<95)return '🌊 Kandawgyi · Bahan'; if(Math.hypot(x+280,z-220)<110)return '🌊 Inya Lake · Kamayut'; if(z<-840){ if(x<-840)return '🏘️ Insein · အင်းစိန်'; if(x<-300)return '🏘️ North Hlaing · လှိုင်မြောက်ဘက်'; if(x<700)return '🏘️ Yankin (expanded) · ရန်ကင်း'; if(z<-900)return '🏘️ North Okkalapa · မြောက်ဥက္ကလာပ'; return '🏘️ South Okkalapa · တောင်ဥက္ကလာပ'; } if(z<-455){ if(x<-460)return '🏘️ Hlaing · လှိုင်'; if(x<-95)return '🎓 Kamayut · ကမာရွတ်'; if(x<460)return '🏘️ Bahan · ဗဟန်း'; if(x<840)return '🏘️ Yankin · ရန်ကင်း'; return '🏘️ South Okkalapa · တောင်ဥက္ကလာပ'; } if(x<-840){ if(z>380)return '🏘️ Ahlone · အလုံ'; return '🏘️ Kyeemyindaing · ကြည့်မြင်တိုင်'; } if(x>840){ if(z>380)return '🏘️ Thaketa · သာကေတ'; if(z>150)return '🏘️ Tamwe (expanded) · တာမွေ'; return '🏘️ Thingangyun · သင်္ဃန်းကျွန်း'; } if(x<-460)return '🏘️ Sanchaung · စမ်းချောင်း'; if(x>460)return '🏘️ Tamwe · တာမွေ'; if(Math.abs(x)<180&&Math.abs(z)<180)return '🏙️ Downtown Yangon'; if(z<-140)return '🌳 Bahan / Dagon'; if(z>140)return '🏘️ Kamayut / Hlaing'; if(x>140)return '🏘️ Thingangyun'; return '🛣️ Yangon Streets';}
 
 // ---- GTA-style feed / wanted stars / engine sound / analog speedometer ----
 function showFeed(txt){ var f=document.getElementById('feed'); if(!f)return; var d=document.createElement('div'); d.className='feed-item'; d.innerHTML=txt; f.appendChild(d); while(f.children.length>3) f.removeChild(f.firstChild); setTimeout(function(){ d.style.transition='opacity .4s'; d.style.opacity='0'; setTimeout(function(){ if(d.parentNode) d.parentNode.removeChild(d); },450); },4200); }
@@ -1125,11 +1431,12 @@ function drawSpeedo(kmh,gear,rpm){ var c=spx; c.clearRect(0,0,300,300); var cx=1
 
 // Minimap (GTA radar style)
 var mm=document.getElementById('minimap').getContext('2d');
-function drawMap(){ var S=220/1640; function MX(v){return 118+v*S;} function MZ(v){return 118+v*S;}
+var mapZone='YGN';
+function drawMap(){ var mcx=0,mcz=0; mapZone= pos.x>3400?'MDY':(pos.x<-3400?'TGY':'YGN'); if(mapZone==='MDY'){mcx=4200;mcz=0;} if(mapZone==='TGY'){mcx=-4200;mcz=0;} var S= mapZone==='YGN'?220/3000:220/1500; function MX(v){return 118+(v-mcx)*S;} function MZ(v){return 118+(v-mcz)*S;}
  mm.fillStyle='#191b1f'; mm.fillRect(0,0,236,236);
  // district tints + labels for the expanded map
  var dz6=[[-815,-815,-460,-460,'rgba(120,160,90,.20)','HLAING'],[-460,-815,-95,-460,'rgba(140,170,100,.16)','KAMAYUT'],[-95,-815,460,-460,'rgba(200,160,60,.18)','BAHAN'],[460,-815,815,-460,'rgba(120,160,90,.20)','YANKIN'],[-815,-460,-460,460,'rgba(200,140,70,.16)','SANCHAUNG'],[460,-460,815,460,'rgba(200,140,70,.16)','TAMWE'],[-460,-460,460,460,'rgba(255,255,255,.06)','DOWNTOWN']];
- dz6.forEach(function(d){ mm.fillStyle=d[4]; mm.fillRect(MX(d[0]),MZ(d[1]),(d[2]-d[0])*S,(d[3]-d[1])*S); mm.fillStyle='rgba(255,255,255,.78)'; mm.font='bold 8.5px system-ui'; mm.textAlign='center'; mm.fillText(d[5],MX((d[0]+d[2])/2),MZ(d[1])+11); }); mm.textAlign='left';
+ if(mapZone==='YGN'){ dz6.forEach(function(d){ mm.fillStyle=d[4]; mm.fillRect(MX(d[0]),MZ(d[1]),(d[2]-d[0])*S,(d[3]-d[1])*S); mm.fillStyle='rgba(255,255,255,.78)'; mm.font='bold 8.5px system-ui'; mm.textAlign='center'; mm.fillText(d[5],MX((d[0]+d[2])/2),MZ(d[1])+11); }); var dzN=[[-1480,-1480,-840,-840,'INSEIN'],[-840,-1480,-300,-840,'N.HLAING'],[840,-1480,1480,-840,'N.OKKALAPA'],[840,-840,1480,-455,'S.OKKALAPA'],[840,-455,1480,150,'THINGANGYUN'],[-1480,-455,-840,380,'KYEEMYINDAING'],[-1480,380,-840,900,'AHLONE'],[840,380,1480,900,'THAKETA']]; dzN.forEach(function(d){ mm.fillStyle='rgba(120,200,160,.14)'; mm.fillRect(MX(d[0]),MZ(d[1]),(d[2]-d[0])*S,(d[3]-d[1])*S); mm.fillStyle='rgba(255,255,255,.72)'; mm.font='bold 7.5px system-ui'; mm.textAlign='center'; mm.fillText(d[4],MX((d[0]+d[2])/2),MZ(d[1])+10); }); } else { mm.fillStyle='rgba(255,255,255,.8)'; mm.font='bold 10px system-ui'; mm.textAlign='center'; mm.fillText(mapZone==='MDY'?'MANDALAY':'TAUNGGYI',118,16); mm.fillStyle='#f5c400'; mm.beginPath(); mm.arc(MX(mapZone==='MDY'?4200:-3950),MZ(mapZone==='MDY'?-330:-250),4,0,7); mm.fill(); } mm.textAlign='left';
  // lakes: Kandawgyi, Inya (north, between Kamayut & Bahan), Inya (south)
  mm.fillStyle='#274b63'; mm.fillRect(MX(195),MZ(-145),150*S,110*S); mm.fillRect(MX(-315),MZ(-685),230*S,170*S); mm.fillRect(MX(-375),MZ(160),190*S,120*S);
  mm.strokeStyle='rgba(160,168,175,.55)'; mm.lineWidth=1.6; for(var i=-9;i<=9;i++){var p=118+i*90*S; mm.beginPath();mm.moveTo(p,8);mm.lineTo(p,228);mm.stroke(); mm.beginPath();mm.moveTo(8,p);mm.lineTo(228,p);mm.stroke();}
@@ -1206,16 +1513,17 @@ function animate(){ requestAnimationFrame(animate);
  slip+=(targetSlip-slip)*Math.min(1,dt*(hb?5.5:3));
  var moveH=heading+slip;
  pos.x+=Math.sin(moveH)*speed*dt; pos.z+=Math.cos(moveH)*speed*dt;
- pos.x=Math.max(-815,Math.min(815,pos.x)); pos.z=Math.max(-815,Math.min(815,pos.z));
+ pos.x=Math.max(-5800,Math.min(5800,pos.x)); pos.z=Math.max(-5800,Math.min(5800,pos.z));
  } else {
  // ---- on foot: GTA third-person walk/run, A/D (or joystick) turns, W/S moves ----
  var wF=(gas?1:0)-(brk?1:0); if(Math.abs(joyY)>0.2) wF=-joyY;
  var wS=(left?1:0)-(right?1:0); if(Math.abs(joyX)>0.12) wS=joyX;
  walkHeading+= wS*2.6*dt*(wF<0?-1:1);
- var wsp=(keys['shift']?8.2:4.2);
+ var wsp=(keys['shift']?8.2:4.2)*(runBoostT>0?1.7:1); if(runBoostT>0)runBoostT-=dt;
  speed= wF*wsp*(wF<0?0.55:1); gearNow=0; rpmF=0.1; slip=0; steerVis=wS;
  pos.x+=Math.sin(walkHeading)*speed*dt; pos.z+=Math.cos(walkHeading)*speed*dt;
- pos.x=Math.max(-815,Math.min(815,pos.x)); pos.z=Math.max(-815,Math.min(815,pos.z));
+ pos.x=Math.max(-5800,Math.min(5800,pos.x)); pos.z=Math.max(-5800,Math.min(5800,pos.z));
+ if(insideBld){ var rm=ROOMS[insideBld.room]; pos.x=Math.max(rm.x-7.4,Math.min(rm.x+7.4,pos.x)); pos.z=Math.max(rm.z-5.4,Math.min(rm.z+5.4,pos.z)); }
  heading=walkHeading;
  walker.position.set(pos.x,0.55+Math.abs(Math.sin(performance.now()*0.012))*0.03*Math.min(1,Math.abs(speed)/4),pos.z); walker.rotation.y=walkHeading;
  var wsw=Math.sin(performance.now()*(keys['shift']?0.016:0.011))*Math.min(1,Math.abs(speed)/3)*0.6;
@@ -1338,8 +1646,10 @@ function animate(){ requestAnimationFrame(animate);
  if(mode==='playing'&&!onFoot&&driveRef.type==='veh'){ oa.style.display='grid'; var rel=Math.atan2(obj.x-pos.x,obj.z-pos.z)-camH; oa.style.transform='rotate('+rel+'rad)'; oa.style.opacity=dist<20?0.3:0.95; } else oa.style.display='none';
  var ep=document.getElementById('enterHint');
  if(mode==='playing'&&!paused){
-   if(onFoot){ var ne2=nearestEnterable(); var nh2=nearHouse();
-     if(ne2){ ep.style.display='block'; ep.innerHTML='🚗 Press <b>E</b> to enter vehicle · ကားထဲ ဝင်ရန် <b>E</b> နှိပ်ပါ'; }
+   if(onFoot){ var ne2=nearestEnterable(); var nh2=nearHouse(); var nd3=(typeof nearDoor==='function')?nearDoor():null;
+     if(typeof insideBld!=='undefined'&&insideBld){ ep.style.display='block'; ep.innerHTML='🚪 Press <b>E</b> to go back outside · အပြင်ထွက်ရန် <b>E</b> နှိပ်ပါ'; }
+     else if(nd3){ ep.style.display='block'; ep.innerHTML='🚪 <b>'+nd3.name+'</b> — Press <b>E</b> to go inside · အတွင်းဝင်ရန် <b>E</b> နှိပ်ပါ'; }
+     else if(ne2){ ep.style.display='block'; ep.innerHTML='🚗 Press <b>E</b> to enter vehicle · ကားထဲ ဝင်ရန် <b>E</b> နှိပ်ပါ'; }
      else if(nh2){ ep.style.display='block'; ep.innerHTML='🏠 <b>'+nh2.name+'</b> — '+fmtKs(nh2.price)+' Ks · Press <b>B</b> to buy · ဝယ်ရန် B'; }
      else ep.style.display='none'; }
    else { ep.style.display='block'; ep.innerHTML='🚶 <b>E</b> / <b>F</b> — Get out · ကားပေါ်က ဆင်းရန်'; }
