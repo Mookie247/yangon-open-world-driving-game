@@ -35,6 +35,8 @@
   .sub{font-size:11px;opacity:.88;margin-top:2px;line-height:1.35;text-shadow:1px 1px 0 #000}
   #speedo{width:148px;height:148px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
   #gearTxt{font-family:'Pricedown Bl','Archivo Black',system-ui,sans-serif;font-size:16px;letter-spacing:1.5px;text-shadow:1px 1px 0 #000;white-space:nowrap}
+  #fpsHud{position:fixed;top:116px;right:14px;z-index:6;background:rgba(5,5,8,.78);border:1px solid rgba(255,255,255,.22);color:#a4d233;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:.5px;padding:5px 9px;border-radius:3px;pointer-events:none;text-shadow:0 1px 2px #000}
+  #fpsHud.low{color:#f87171;border-color:rgba(248,113,113,.5)}
   .vehicles{position:fixed;top:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:6}
   .vbtn{pointer-events:auto;border:1px solid rgba(255,255,255,.22);background:rgba(5,5,8,.72);color:#fff;padding:8px 12px;border-radius:3px;font-weight:800;font-size:12.5px;letter-spacing:.4px;cursor:pointer;text-transform:uppercase}
   .vbtn.active{background:#f5c400;color:#111;border-color:#f5c400}
@@ -53,7 +55,7 @@
   .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .pill{font-size:12px;line-height:1.75;border:1px solid rgba(255,255,255,.2);padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.06)}
   #playBtn{margin-top:16px;width:100%;padding:15px;border:2px solid #fff;border-radius:4px;background:#0a0a0c;color:#fff;font-family:'Pricedown Bl','Archivo Black',system-ui,sans-serif;font-weight:400;letter-spacing:2.5px;font-size:19px;cursor:pointer;transition:background .15s,color .15s} #playBtn:hover{background:#fff;color:#0a0a0c}
-  body:not(.playing) .hud-tl, body:not(.playing) .hud-tr, body:not(.playing) .hud-bl, body:not(.playing) .hud-br{opacity:0;pointer-events:none}
+  body:not(.playing) .hud-tl, body:not(.playing) .hud-tr, body:not(.playing) .hud-bl, body:not(.playing) .hud-br, body:not(.playing) #fpsHud{opacity:0;pointer-events:none}
   #startCard{pointer-events:none} #startCard .card{pointer-events:auto}
   #err{position:fixed;left:10px;right:10px;bottom:110px;z-index:99;background:#7f1d1d;color:#fff;padding:10px;border-radius:8px;font-size:12px;display:none;white-space:pre-wrap}
   @media(max-width:640px){
@@ -159,6 +161,7 @@
     .loc{font-size:12px}
     .hud-br .sub{display:none}
     #enterHint{bottom:30%;font-size:11.5px;padding:6px 10px}
+    #fpsHud{top:72px;right:8px;font-size:10.5px;padding:3px 6px}
     #objArrow{top:58px;width:28px;height:28px;font-size:14px;margin-left:-14px}
     #missionCard{bottom:5%;padding:8px 18px}
     #mcTitle{font-size:20px}
@@ -188,6 +191,7 @@
   <div id="feed"></div>
 </div>
 
+<div id="fpsHud">-- FPS</div>
 <div class="hud-tr">
   <div style="font-size:10px;letter-spacing:1px;color:#fca5a5;font-weight:800;text-shadow:1px 1px 0 #000">🚔 TRAFFIC POLICE · ယာဉ်ထိန်းရဲ</div>
   <div id="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -204,6 +208,7 @@
   <button class="vbtn" id="btnSound">🔊 Sound [M]</button>
   <button class="vbtn" id="btnWheel">🎡 Wheel [Q]</button>
   <button class="vbtn" id="btnPause">⏸ Pause</button>
+  <button class="vbtn active" id="btnFps">📊 FPS</button>
 </div>
 
 <div id="toast" style="position:fixed;top:34%;left:50%;transform:translate(-50%,-50%) scale(.94);z-index:30;background:rgba(5,5,8,.85);border-top:2px solid #f5c400;border-bottom:2px solid #f5c400;color:#fff;font-family:'Pricedown Bl','Archivo Black',sans-serif;font-size:30px;letter-spacing:2px;padding:14px 34px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:all .25s"><span id="toastMain">MISSION PASSED</span><div id="toastSub" style="font-family:system-ui;font-size:15px;letter-spacing:0;font-weight:800;color:#f5c400;margin-top:4px">🅿️ PARKED! +5,000 Ks</div></div>
@@ -277,6 +282,7 @@
 </div>
 <p id="modelNote" style="font-size:11.5px;opacity:.85;background:rgba(245,196,0,.08);border:1px solid rgba(245,196,0,.3);padding:7px 10px;margin-top:10px">📌 <b>Model မှတ်ချက်:</b> ဒီ build မှာ <b>Blender GLB အစစ် ၆ မျိုး</b> ပါတယ် — 🚕 Taxi · 🚌 YBS Bus · 🚲 Bicycle · 🛕 Sule Pagoda · 🚶 လူများ · 🏠 Shophouse — ဂိမ်းထဲမှာ တိုက်ရိုက် တင်သုံးထားပြီး Load ဖြစ်နေဆဲပါ… တစ်ခုခု load မရရင် အဲ့ model ပဲ procedural placeholder အဖြစ် ကျန်ပါမယ်။</p>
 <p style="font-size:11.5px;opacity:.9;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.35);padding:7px 10px;margin-top:10px">🔊 <b>ကားအသံ:</b> တကယ့်ကားအင်ဂျင်သံကို <b>Web Audio synthesis</b> နဲ့ တုပ ဖန်တီးထားတာပါ — external audio file လုံးဝ မပါဘူး။ RPM တက်/ကျအလိုက် အသံ ပြောင်းတယ်၊ ကားအမျိုးအစားအလိုက် အသံကွာတယ် (Taxi · YBS ဒီဇယ် · Sports)၊ Gear ပြောင်းရင် blip သံ၊ မြန်ရင် လမ်းသံ၊ Drift လုပ်ရင် skid သံ၊ ကားထဲ ဝင်ရင် starter crank သံ ကြားရမယ်။ <b>H</b> = Horn · <b>M</b> / 🔊 ခလုတ် = အသံဖွင့်/ပိတ်။<br>The engine sound is synthesized live to mimic a real car — no audio files. It rises and falls with RPM, sounds different per vehicle, and includes gear-shift blips, road noise, skid, horn and starter cranking.</p>
+<p style="font-size:11.5px;opacity:.9;background:rgba(164,210,51,.08);border:1px solid rgba(164,210,51,.35);padding:7px 10px;margin-top:10px">⚡ <b>Performance · 60 FPS ပစ်မှတ်:</b> ဒီဂိမ်းက <b>60 fps</b> တည်ငြိမ်အောင် ရည်ရွယ်ထားတယ် — တကယ့် frame rate ကို တိုင်းပြီး လိုအပ်ရင် resolution၊ shadow၊ မြင်ကွင်း အကွာအဝေးနဲ့ လူအရေအတွက်ကို အလိုအလျောက် အဆင့်ဆင့် လျှော့ချပေးတဲ့ <b>Adaptive Quality</b> စနစ် ပါတယ် (ပြန်မြန်လာရင် အလိုအလျောက် ပြန်တင်ပေးတယ်)။ ညာဘက်အပေါ်က <b>FPS</b> ကောင်တာမှာ လက်ရှိ frame rate ကို အချိန်နဲ့တပြေးညီ မြင်ရပြီး 📊 FPS ခလုတ်နဲ့ ဖွင့်/ပိတ် လုပ်လို့ရတယ်။<br>📌 <b>ရိုးသားစွာ မှတ်ချက်:</b> ဂိမ်းက ဖုန်းရဲ့ ကိုယ်ပိုင် display refresh setting ကို ကျော်လွန်ပြောင်းလို့ <b>မရပါဘူး</b> — 60Hz ဖုန်းမှာ 60 fps က အများဆုံးဖြစ်ပြီး၊ 90Hz / 120Hz ဖုန်းတွေမှာတော့ requestAnimationFrame က display rate အတိုင်း အလိုအလျောက် လိုက်ပြေးပါတယ်။<br>Target: a stable 60 fps on phone and laptop, with automatic adaptive quality. The game cannot override your phone's display refresh setting — 60 fps is the cap on a 60Hz phone; on 90/120Hz phones it runs at the display rate via requestAnimationFrame.</p>
 <p style="font-size:11.5px;opacity:.9;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.35);padding:7px 10px;margin-top:10px">🗺️ <b>မြေပုံ အသစ်:</b> မြို့နယ် ၆ ခု ထပ်ချဲ့ထားတယ် — <b>Bahan</b> (ရွှေတိဂုံ အနီး၊ အင်းလျား အရှေ့ဘက်) · <b>Kamayut</b> (လှည်းတန်း၊ ရန်ကုန်တက္ကသိုလ်၊ အင်းလျား အနောက်ဘက်) · <b>Hlaing</b> (အင်းစိန်လမ်း၊ လှိုင်တက္ကသိုလ်) · <b>Sanchaung</b> (စမ်းချောင်းလမ်း၊ ဗာကရာလမ်း) · <b>Tamwe</b> (တာမွေဈေး၊ ကျိုက်က္ကဆံဘုရား) · <b>Yankin</b> (ရန်ကင်းစင်တာ၊ မိုးကောင်းဘုရား၊ ကန်တော်ကြီး မြောက်ဘက်)။ Taxi / YBS Route 37 (မှတ်တိုင် ၁၀ ခု) / Delivery mission တွေ မြို့နယ်အသစ်တွေဆီ ရောက်တယ်။<br>📌 <b>မှတ်ချက်:</b> မြို့နယ်တွေရဲ့ အချင်းချင်း အနေအထားနဲ့ လမ်းနာမည်အစစ်တွေ သုံးထားပေမယ့် <b>landmark နေရာတွေက အနီးစပ်ဆုံး ခန့်မှန်းချက် (approximate)</b> ပါ — ဂိမ်းကစားဖို့ အဆင်ပြေအောင် မြေပုံကို ရိုးရှင်းအောင် ချုံ့ထားတာပါ။ District positions and real street names are used, but landmark placements are approximate and simplified for gameplay.</p>
 <div id="loadWrap" style="margin-top:14px">
   <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:1px"><span>LOADING · မြို့ကို တည်ဆောက်နေတယ်</span><span id="loadPct">0%</span></div>
@@ -289,7 +295,7 @@
       <button class="mbtn" id="btnMenuControls">🎮 CONTROLS</button>
       <button class="mbtn" id="btnMenuWheel">🎡 VEHICLE WHEEL</button>
     </div>
-    <div id="controlsPanel" style="display:none;margin-top:10px;font-size:12.5px;line-height:1.9;background:rgba(255,255,255,.05);padding:10px 12px;border:1px solid rgba(255,255,255,.14)">⌨️ <b>Laptop:</b> WASD / Arrow Keys မောင်း (မြန်မာ keyboard layout နဲ့လည်း ရတယ်) · Mouse drag = Camera · E = Enter/Exit car · F = Exit · Space = Handbrake · 1/2/3 = Vehicle · Q = Wheel · C = Camera · R = Radio · N = Night · M = Mute · Esc = Pause · B = Buy house<br>📱 <b>Phone:</b> Left joystick = steer + throttle · ▲ = Gas · ▼ = Brake/Reverse · 🌀 = Drift · 🚪 = Enter · 📷 = Camera · ⏸ = Pause</div>
+    <div id="controlsPanel" style="display:none;margin-top:10px;font-size:12.5px;line-height:1.9;background:rgba(255,255,255,.05);padding:10px 12px;border:1px solid rgba(255,255,255,.14)">⌨️ <b>Laptop:</b> WASD / Arrow Keys မောင်း (မြန်မာ keyboard layout နဲ့လည်း ရတယ်) · Mouse drag = Camera · E = Enter/Exit car · F = Exit · Space = Handbrake · 1/2/3 = Vehicle · Q = Wheel · C = Camera · R = Radio · N = Night · M = Mute · Esc = Pause · B = Buy house · 📊 FPS button (top bar) = FPS counter on/off — the game auto-adjusts quality to hold 60 fps<br>📱 <b>Phone:</b> Left joystick = steer + throttle · ▲ = Gas · ▼ = Brake/Reverse · 🌀 = Drift · 🚪 = Enter · 📷 = Camera · ⏸ = Pause</div>
     <p style="font-size:11px;opacity:.7;text-align:center">ရန်ကုန် တစ်မြို့လုံး လွတ်လပ်စွာ — Taxi fare · YBS route · Delivery Jobs နဲ့ Ks ရှာ၊ အိမ်/ကား ဝယ်ပါ</p>
   </div>
 </div>
@@ -315,7 +321,17 @@ var skyTex=new THREE.CanvasTexture(skyC); skyTex.colorSpace=THREE.SRGBColorSpace
 var skyDome=new THREE.Mesh(new THREE.SphereGeometry(1500,24,16), new THREE.MeshBasicMaterial({map:skyTex,side:THREE.BackSide,fog:false})); scene.add(skyDome);
 scene.background=new THREE.Color(0xe2703a);
 var camera=new THREE.PerspectiveCamera(62, innerWidth/innerHeight, .1, 2000);
-var renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio,1.25)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFShadowMap; renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.18;
+// ===== 60 FPS performance system: capped pixel ratio + adaptive quality tiers =====
+// Tier 0 ULTRA (laptop/desktop start) -> 1 HIGH (phone start) -> 2 BALANCED -> 3 PERFORMANCE.
+// applyPerfTier() steps DOWN when measured fps stays under target and back UP when headroom returns.
+var PERF_TIERS=[
+ {name:'ULTRA',pr:2,shadow:1024,fogFar:1560,camFar:2000,pedCull:285,cullR:1400,dust:true},
+ {name:'HIGH',pr:1.5,shadow:768,fogFar:1250,camFar:1600,pedCull:240,cullR:1000,dust:true},
+ {name:'BALANCED',pr:1.15,shadow:512,fogFar:950,camFar:1250,pedCull:190,cullR:850,dust:false},
+ {name:'PERFORMANCE',pr:0.85,shadow:0,fogFar:680,camFar:950,pedCull:140,cullR:580,dust:false}];
+var perfIsCoarse=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||'ontouchstart' in window;
+var perfTier=perfIsCoarse?1:0, perfFps=0, perfPedCullSq=285*285, perfCullSq=1400*1400, perfCullables=[];
+var renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'}); renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(Math.min(devicePixelRatio||1,PERF_TIERS[perfTier].pr)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFShadowMap; renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.18;
 document.getElementById('game').appendChild(renderer.domElement);
 var hemi=new THREE.HemisphereLight(0xffd9a0,0x2f4a26,0.95); scene.add(hemi); scene.add(new THREE.AmbientLight(0xff9a50,0.22));
 var sun=new THREE.DirectionalLight(0xffa63e,2.7); sun.position.set(-160,150,-70); sun.castShadow=true; sun.shadow.mapSize.set(1024,1024); sun.shadow.camera.left=-260; sun.shadow.camera.right=260; sun.shadow.camera.top=260; sun.shadow.camera.bottom=-260; sun.shadow.camera.far=800; sun.shadow.bias=-0.0006; scene.add(sun); scene.add(sun.target);
@@ -896,6 +912,7 @@ document.getElementById('btnBus').onclick=function(){setVehicle('bus');startGame
 document.getElementById('btnBike').onclick=function(){setVehicle('bike');startGame();};
 document.getElementById('btnHorn').onclick=function(){horn();startGame();};
 document.getElementById('btnSound').onclick=function(){ audio(); setMuted(!muted); };
+document.getElementById('btnFps').onclick=function(){ var fh=document.getElementById('fpsHud'); var show=fh.style.display==='none'; fh.style.display=show?'block':'none'; this.classList.toggle('active',show); if(fh&&show)fh.textContent=(window.__fps||0)+' FPS · '+PERF_TIERS[perfTier].name; };
 
 // Audio
 var AC=null, masterG=null, crankT=0, prevGearEng=1, shiftDip=0;
@@ -1129,10 +1146,45 @@ var dustGeo=new THREE.BufferGeometry(); dustGeo.setAttribute('position',new THRE
 var dustSpr=(function(){var c=document.createElement('canvas');c.width=c.height=64;var g=c.getContext('2d');var gr=g.createRadialGradient(32,32,2,32,32,32);gr.addColorStop(0,'rgba(255,220,160,1)');gr.addColorStop(1,'rgba(255,180,80,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);})();
 var dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({size:1.15,map:dustSpr,transparent:true,opacity:.65,depthWrite:false,blending:THREE.AdditiveBlending})); scene.add(dust);
 
+// ===== adaptive quality: apply a PERF tier (resolution / shadows / fog+draw distance / culling radii / dust) =====
+function applyPerfTier(t){
+ perfTier=Math.max(0,Math.min(PERF_TIERS.length-1,t)); var cfg=PERF_TIERS[perfTier];
+ renderer.setPixelRatio(Math.min(devicePixelRatio||1,cfg.pr)); renderer.setSize(innerWidth,innerHeight);
+ if(cfg.shadow===0){ sun.castShadow=false; }
+ else { sun.castShadow=true; if(sun.shadow.mapSize.x!==cfg.shadow){ sun.shadow.mapSize.set(cfg.shadow,cfg.shadow); if(sun.shadow.map){ try{sun.shadow.map.dispose();}catch(e){} sun.shadow.map=null; } } }
+ scene.fog.far=cfg.fogFar; scene.fog.near=Math.round(cfg.fogFar*0.11);
+ if(Math.abs(camera.far-cfg.camFar)>1){ camera.far=cfg.camFar; camera.updateProjectionMatrix(); }
+ perfPedCullSq=cfg.pedCull*cfg.pedCull; perfCullSq=cfg.cullR*cfg.cullR;
+ // on BALANCED/PERFORMANCE the shadow map re-renders every other frame instead of every frame (animate() drives needsUpdate) — moving shadows stay smooth at 30 Hz while the depth pass cost halves
+ renderer.shadowMap.autoUpdate=perfTier<2; if(perfTier>=2) renderer.shadowMap.needsUpdate=true;
+ try{ dust.visible=cfg.dust; }catch(e){}
+ try{ clouds.forEach(function(c,i){ c.g.visible=(perfTier<3||i%2===0); }); }catch(e){}
+ window.__perfTier=perfTier; window.__perfTierName=cfg.name;
+}
+// distance-cull list: small static props/buildings only (tall landmarks, roads, ground and dynamic objects are never culled);
+// three.js frustum culling already skips off-screen objects per frame — this adds distance culling on top, refreshed a few times a second.
+function buildPerfCullables(){ perfCullables=[]; scene.children.forEach(function(ch){ if(!ch.visible) return; if(ch.userData&&ch.userData.dyn) return; if(ch.isLight||ch.isPoints) return;
+ try{ var bb=new THREE.Box3().setFromObject(ch); var sz=bb.getSize(new THREE.Vector3()); var md=Math.max(sz.x,sz.y,sz.z); if(md<0.01||md>34) return; perfCullables.push({o:ch,x:(bb.min.x+bb.max.x)/2,z:(bb.min.z+bb.max.z)/2}); }catch(e){} }); }
+function updatePerfCull(){ if(!perfCullables.length) return; for(var i=0;i<perfCullables.length;i++){ var c=perfCullables[i], dx=c.x-pos.x, dz=c.z-pos.z; c.o.visible=(dx*dx+dz*dz)<=perfCullSq; } }
+// FPS meter state (exposed on window for verification: window.__fps / window.__perfTier)
+var perfLastMs=performance.now(), perfWinT=0, perfWinN=0, perfDown=0, perfUp=0, perfCool=0;
+window.__fps=0; window.__perfTier=perfTier;
+
 // Main loop
 var clock=new THREE.Clock(), camPos=new THREE.Vector3(182,7.5,-4.5), frameN=0;
-function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.render(scene,camera);}catch(e){} return; } try{
+function animate(){ requestAnimationFrame(animate);
+ // --- live FPS measurement + adaptive quality (runs on real rAF timing; the phone's own refresh rate is the ceiling) ---
+ var nowMs=performance.now(), rawDt=(nowMs-perfLastMs)/1000; perfLastMs=nowMs;
+ if(paused){ try{renderer.render(scene,camera);}catch(e){} return; } try{
  var dt=Math.min(clock.getDelta(),0.05); var V=VS; frameN++; var hudTick=(frameN%3===0);
+ if(rawDt>0&&rawDt<0.25){ perfWinT+=rawDt; perfWinN++; }
+ if(perfWinT>=0.5&&perfWinN>4){ perfFps=Math.round(perfWinN/perfWinT); window.__fps=perfFps; perfWinT=0; perfWinN=0;
+   var fh=document.getElementById('fpsHud'); if(fh&&fh.style.display!=='none'){ fh.textContent=perfFps+' FPS · '+PERF_TIERS[perfTier].name; fh.className=perfFps<45?'low':''; }
+   if(mode==='playing'){ if(perfCool>0)perfCool-=0.5;
+     if(perfCool<=0){ if(perfFps<52){ perfDown++; perfUp=0; } else if(perfFps>57){ perfUp++; perfDown=0; } else { perfDown=0; perfUp=0; }
+       if(perfDown>=3&&perfTier<PERF_TIERS.length-1){ applyPerfTier(perfTier+1); perfDown=0; perfCool=3; }
+       else if(perfUp>=10&&perfTier>0){ applyPerfTier(perfTier-1); perfUp=0; perfCool=3; } } } }
+ if(frameN%20===0) updatePerfCull(); // distance culling refresh (~3x/sec) — far small props/buildings stop drawing entirely
  var gas=(keys['w']||keys['arrowup']||touch.gas||joyY<-0.3)?1:0, brk=(keys['s']||keys['arrowdown']||touch.brake||joyY>0.45)?1:0, left=(keys['a']||keys['arrowleft']||touch.left)?1:0, right=(keys['d']||keys['arrowright']||touch.right)?1:0;
  var hb=!!keys[' ']||touch.drift; // handbrake (Space or touch drift button)
  var spdAbs=Math.abs(speed), spdR0=Math.min(1,spdAbs/V.max);
@@ -1182,17 +1234,17 @@ function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.ren
  if(player.userData.tlMat) player.userData.tlMat.color.setHex((brk||hb)?0xff7a5c:0xff2a1a); // brake lights flare
  if(cur==='bike'&&player.userData.rider){ player.userData.rider.rotation.x=steerVis*0.28; player.userData.rider.position.y=0.9+Math.sin(performance.now()*0.02)*0.03*Math.min(1,Math.abs(speed)/5); }
  }
- // traffic
- traffic.forEach(function(t){ if(t.jacked||t.parked)return; t.t+=(t.sp+(t.police&&wanted>=2?6:0))*t.dir*dt; if(t.t>460)t.t=-460; if(t.t<-460)t.t=460; if(t.horiz){t.g.position.set(t.t,0.55,t.fixed); t.g.rotation.y=t.dir>0?0:Math.PI;} else {t.g.position.set(t.fixed,0.55,t.t); t.g.rotation.y=t.dir>0?-Math.PI/2:Math.PI/2;} });
+ // traffic (far traffic is distance-culled: hidden beyond the tier's pedestrian/object radius, so it costs no draw calls)
+ traffic.forEach(function(t){ if(t.jacked||t.parked)return; t.t+=(t.sp+(t.police&&wanted>=2?6:0))*t.dir*dt; if(t.t>460)t.t=-460; if(t.t<-460)t.t=460; if(t.horiz){t.g.position.set(t.t,0.55,t.fixed); t.g.rotation.y=t.dir>0?0:Math.PI;} else {t.g.position.set(t.fixed,0.55,t.t); t.g.rotation.y=t.dir>0?-Math.PI/2:Math.PI/2;} var tdx=t.g.position.x-pos.x, tdz=t.g.position.z-pos.z; t.g.visible=(tdx*tdx+tdz*tdz)<perfCullSq; });
  // pedestrians: walk the sidewalks, dodge the player
  peds.forEach(function(p){ if(p.talk){ var tsw=Math.sin(performance.now()*0.003+p.ph); p.a1.rotation.x=-0.55+tsw*0.4; p.a2.rotation.x=-0.35-tsw*0.3; p.g.rotation.y+=Math.sin(performance.now()*0.0007+p.ph)*0.0006; return; } p.t+=p.sp*(p.fleeT>0?2.7:1)*p.dir*dt; if(p.fleeT>0)p.fleeT-=dt; var pt1=(p.t1==null?450:p.t1), pt0=(p.t0==null?-450:p.t0); if(p.t>pt1)p.t=pt0; if(p.t<pt0)p.t=pt1;
    var wx=p.axis==='h'?p.t:p.fixed, wz=p.axis==='h'?p.fixed:p.t;
    var pdx=wx-pos.x, pdz=wz-pos.z, pdd=pdx*pdx+pdz*pdz;
-   p.g.visible=pdd<81000; if(!p.g.visible) return; // distance culling (~285 m) — the crowd is city-wide but only the nearby block renders, keeping phones smooth
+   p.g.visible=pdd<perfPedCullSq; if(!p.g.visible) return; // distance culling (radius shrinks with the adaptive tier) — the crowd is city-wide but only the nearby block renders, keeping phones smooth
    if(pdd<8) p.dodge=1.4; if(pdd<30&&Math.abs(speed)>5){ p.dodge=2.4; p.fleeT=1.8; } if(p.dodge>0)p.dodge=Math.max(0,p.dodge-dt*0.7); // fast car nearby -> run away
    if(p.axis==='h') wz+=p.dodge*2.4; else wx+=p.dodge*2.4;
    p.g.position.set(wx,0.55,wz); p.g.rotation.y= p.axis==='h'? (p.dir>0?Math.PI/2:-Math.PI/2) : (p.dir>0?0:Math.PI);
-   var sw=Math.sin(performance.now()*0.010*p.sp+p.ph)*0.55; p.l1.rotation.x=sw; p.l2.rotation.x=-sw; p.a1.rotation.x=-sw*0.75; p.a2.rotation.x=sw*0.75;
+   if(!(perfTier>=2&&frameN%2===1&&pdd>3600)){ var sw=Math.sin(performance.now()*0.010*p.sp+p.ph)*0.55; p.l1.rotation.x=sw; p.l2.rotation.x=-sw; p.a1.rotation.x=-sw*0.75; p.a2.rotation.x=sw*0.75; } // far walkers animate limbs at half rate on lower tiers
    if(pdd<1.2&&Math.abs(speed)>2){ addWanted(1); hp=Math.max(5,hp-4); speed*=0.45; shake=Math.min(1,shake+0.5); showFeed('⚠️ လမ်းသွားလူကို တိုက်မိတော့မယ် — သတိထားပါ!'); blip(140,.2); p.dodge=1.6; }
  });
  // collisions: traffic cars (bounce + wanted star + damage)
@@ -1212,20 +1264,20 @@ function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.ren
  sun.position.set(pos.x-170,155,pos.z-75); sun.target.position.set(pos.x,0,pos.z);
  // speed feel: FOV widens + vignette deepens with speed
  var spdR=Math.abs(speed)/V.max; var targetFov=62+spdR*13; if(Math.abs(camera.fov-targetFov)>.15){camera.fov+=(targetFov-camera.fov)*Math.min(1,dt*5); camera.updateProjectionMatrix();}
- document.getElementById('vignette').style.opacity=(0.5+spdR*0.5).toFixed(2);
+ if(hudTick) document.getElementById('vignette').style.opacity=(0.5+spdR*0.5).toFixed(2);
  // clouds drift + dust follows player
  clouds.forEach(function(c){c.g.position.x+=c.sp*dt; if(c.g.position.x>760)c.g.position.x=-760;});
- dust.position.set(pos.x,0,pos.z); dust.rotation.y+=dt*0.02;
+ if(dust.visible){ dust.position.set(pos.x,0,pos.z); dust.rotation.y+=dt*0.02; } // hidden on lower tiers — skip its per-frame transform work too
  skyDome.position.set(pos.x,0,pos.z);
  // day/night Yangon: golden hour <-> night lights (lerped)
  dnT+=((night?1:0)-dnT)*Math.min(1,dt*1.6);
  if(frameN%2===0){ sun.intensity=lerpF(2.7,0.55,dnT); hemi.intensity=lerpF(0.95,0.34,dnT); renderer.toneMappingExposure=lerpF(1.18,0.92,dnT); scene.fog.color.setRGB(lerpF(0.91,0.07,dnT),lerpF(0.60,0.10,dnT),lerpF(0.36,0.22,dnT)); skyDome.material.color.setRGB(lerpF(1,0.15,dnT),lerpF(1,0.19,dnT),lerpF(1,0.38,dnT)); sun.color.setRGB(lerpF(1,0.55,dnT),lerpF(0.65,0.66,dnT),lerpF(0.24,1,dnT)); }
  beacon.rotation.y+=dt; ring.scale.setScalar(1+Math.sin(performance.now()*0.004)*0.12);
- var tlPhase=(performance.now()/11000)%1;
- tlLamps.forEach(function(L){var ph=(tlPhase+L.off)%1; L.m.r.color.setHex(ph<.5?0x3a1512:0xff2a1a); L.m.a.color.setHex(ph>=.5&&ph<.62?0xffb020:0x33270f); L.m.g.color.setHex(ph>=.62?0x2aff5a:0x0f3318);});
+ if(frameN%4===0){ var tlPhase=(performance.now()/11000)%1;
+ tlLamps.forEach(function(L){var ph=(tlPhase+L.off)%1; L.m.r.color.setHex(ph<.5?0x3a1512:0xff2a1a); L.m.a.color.setHex(ph>=.5&&ph<.62?0xffb020:0x33270f); L.m.g.color.setHex(ph>=.62?0x2aff5a:0x0f3318);}); }
  // ===== Myanmar mission logic: Taxi fare · YBS route stops · Delivery =====
  var dist=Math.hypot(pos.x-obj.x,pos.z-obj.z);
- document.getElementById('distTxt').textContent='အကွာအဝေး: '+Math.round(dist)+' m · ✓ ပြီးစီး '+arrived+' ခု';
+ if(hudTick) document.getElementById('distTxt').textContent='အကွာအဝေး: '+Math.round(dist)+' m · ✓ ပြီးစီး '+arrived+' ခု';
  var stoppedM=Math.abs(speed)<0.4;
  var missActive=(!onFoot&&driveRef.type==='veh');
  if(missActive&&MISS.type==='taxi'){
@@ -1263,7 +1315,7 @@ function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.ren
  if(hudTick) drawSpeedo(Math.abs(speed)*3.6, speed<-0.5?'R':(Math.abs(speed)<0.4?'N':gearNow), rpmF);
  if(wantedTimer>0){ wantedTimer-=dt; if(wantedTimer<=0&&wanted>0){ wanted--; wantedTimer=9; setStars(); } }
  if(hp<100) hp=Math.min(100,hp+dt*(wanted>0?0.4:1.6));
- var hpf=document.getElementById('hpFill'); if(hpf) hpf.style.width=Math.round(hp)+'%';
+ if(hudTick){ var hpf=document.getElementById('hpFill'); if(hpf) hpf.style.width=Math.round(hp)+'%'; }
  if(hp<=8&&!wastedOn){ wastedOn=true; var wv=document.getElementById('wasted'); wv.style.display='grid'; speed=0; setTimeout(function(){ wv.style.display='none'; hp=55; wanted=0; setStars(); wastedOn=false; showFeed('🏥 ဆေးရုံမှ ပြန်ထွက်လာပြီ — HP ပြန်ဖြည့်ထားတယ်'); },2600); }
  if(eng){ var prof=engProf();
    if(!onFoot&&gearNow>0&&gearNow!==prevGearEng&&Math.abs(speed)>2) shiftDip=0.22; // gear-shift blip: revs dip as the next gear engages
@@ -1280,7 +1332,7 @@ function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.ren
    eng.rF.frequency.value=360+spdAbs*24; eng.rG.gain.value+=(((muted||onFoot)?0:Math.min(0.045,spdAbs*0.0015)*(cur==='bike'&&driveRef.type==='veh'?0.35:1))-eng.rG.gain.value)*0.15; // tire / road noise grows with speed
    var skOn=!muted&&!onFoot&&spdAbs>6&&(hb||Math.abs(slip)>0.15); eng.sG.gain.value+=((skOn?Math.min(0.055,0.02+Math.abs(slip)*0.2):0)-eng.sG.gain.value)*0.3; // skid screech on handbrake / hard drift
  }
- var stN=streetHere(pos.x,pos.z); document.getElementById('locName').textContent=zoneName(pos.x,pos.z)+(stN?' · 🛣️ '+stN:'');
+ if(hudTick){ var stN=streetHere(pos.x,pos.z); document.getElementById('locName').textContent=zoneName(pos.x,pos.z)+(stN?' · 🛣️ '+stN:''); }
  // GTA objective arrow + context hint (enter car / exit / buy house)
  var oa=document.getElementById('objArrow');
  if(mode==='playing'&&!onFoot&&driveRef.type==='veh'){ oa.style.display='grid'; var rel=Math.atan2(obj.x-pos.x,obj.z-pos.z)-camH; oa.style.transform='rotate('+rel+'rad)'; oa.style.opacity=dist<20?0.3:0.95; } else oa.style.display='none';
@@ -1292,7 +1344,8 @@ function animate(){ requestAnimationFrame(animate); if(paused){ try{renderer.ren
      else ep.style.display='none'; }
    else { ep.style.display='block'; ep.innerHTML='🚶 <b>E</b> / <b>F</b> — Get out · ကားပေါ်က ဆင်းရန်'; }
  } else ep.style.display='none';
- if(hudTick) drawMap();
+ if(frameN%(perfTier>=2?9:perfTier===1?6:4)===0) drawMap(); // minimap redraw throttled by tier — it is a full 2D repaint
+ if(perfTier>=2&&sun.castShadow) renderer.shadowMap.needsUpdate=(frameN%2===0); // half-rate shadow pass on lower tiers (autoUpdate is off there)
  renderer.render(scene,camera);
 }catch(e){ window.onerror(e.message,'',0); } }
 // ===== Blender GLB integration — real Blender models replace the procedural ones when their files are present =====
@@ -1348,6 +1401,10 @@ if(window.__rotLock) window.__onRotLock(true);
 // freeze static objects (buildings, signs, lights...) — only vehicles/traffic/clouds/beacon/dust move
 Object.values(vehicles).forEach(function(v){v.obj.userData.dyn=1;}); traffic.forEach(function(t){t.g.userData.dyn=1;}); clouds.forEach(function(c){c.g.userData.dyn=1;}); beacon.userData.dyn=1; ring.userData.dyn=1; dust.userData.dyn=1; skyDome.userData.dyn=1; parkGlow.userData.dyn=1;
 scene.traverse(function(o){ var n=o, dyn=false; while(n){ if(n.userData&&n.userData.dyn){dyn=true;break;} n=n.parent; } if(!dyn){ o.matrixAutoUpdate=false; o.updateMatrix(); } });
+// ===== 60fps step 1: shadow casters cut to essentials — anything under 0.55 m (ped heads & hats, tea-shop cups, tiny props) stops casting; buildings, trees, vehicles and landmarks keep their shadows, so the depth pass only draws what a player can actually see =====
+scene.updateMatrixWorld(true);
+scene.traverse(function(o){ if(o.isMesh&&o.castShadow){ try{ var bb=new THREE.Box3().setFromObject(o); var sz=bb.getSize(new THREE.Vector3()); if(Math.max(sz.x,sz.y,sz.z)<0.55) o.castShadow=false; }catch(e){} } });
+applyPerfTier(perfTier); buildPerfCullables(); updatePerfCull(); // start on the device-appropriate tier, with the distance-cull list ready
 player.position.copy(pos); animate();
 addEventListener('resize',function(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 var __lb=document.getElementById('loadBar'),__lp=document.getElementById('loadPct'); if(__lb)__lb.style.width='100%'; if(__lp)__lp.textContent='100%'; var __pb=document.getElementById('playBtn'); __pb.disabled=false; __pb.style.opacity='1'; __pb.textContent='▶  စတင် မောင်းမယ် — START GAME'; var __lw=document.getElementById('loadWrap'); if(__lw)__lw.style.display='none';
